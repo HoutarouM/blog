@@ -1,35 +1,5 @@
-<?php
-/*
-    TODO:
-    - Logowanie
-        - sesja
-    - Rejestracja
-        - moc hasla 
-        - hashowanie
-    - Dodawanie postow - tylko dla zalogowanych
-    - Wyswetlanie postow - dla wszystkich
-    - komentowanie
-    - hierarcjia
+<?php require('view/header.php'); ?>
 
-    Baza danych:
-    - nazwa forum
-    tabele:
-    - Posty
-        - id 
-        - tytul
-        - kategorie
-        - id_autora
-        - postnadzendny
-    - Users
-        - id
-        - email
-        - haslo 
-        - nick
-    - Polubienia
-        - id
-        - id_uzytkownika
-        - id_posta
+<h1>Main</h1>
 
-    - dane do bazy w osobnym pliku 
-*/
-?>
+<?php require('view/footer.php'); ?>
