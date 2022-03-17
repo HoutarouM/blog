@@ -6,13 +6,15 @@ namespace App {
     {
         private $controller;
         private $controllerMethod;
-        private $controllerMethodParams = [];
+        private $controllerMethodParam;
 
         public function __construct()
         {
             $url = $this->splitURL();
 
             $this->getController($url);
+
+            $this->getAndExecuteControllerMethod($url);
         }
 
         private function splitURL()
@@ -51,8 +53,20 @@ namespace App {
             // error page is not found
         }
 
-        private function getControllerMethod($url)
+        private function getAndExecuteControllerMethod($url)
         {
+            /**
+             * Check is url have method
+             * if have checking if method exists
+             * if exists execute method and write method to controllerMethod var
+             */
+            if (!empty($url[1])) {
+                if (method_exists($this->controller, $url[1]))
+                    $this->controllerMethod = call_user_func($this->controller->$url[1], $this->controllerMethodParam);
+            } else {
+                // TODO:
+                // default method
+            }
         }
     }
 }
