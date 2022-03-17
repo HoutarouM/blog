@@ -14,6 +14,8 @@ namespace App {
 
             $this->getController($url);
 
+            $this->getControllerMethodParameters($url);
+
             $this->getAndExecuteControllerMethod($url);
         }
 
@@ -67,6 +69,15 @@ namespace App {
                 // TODO:
                 // default method
             }
+        }
+
+        private function getControllerMethodParameters($url)
+        {
+            /** Check is url contains method parameter
+             * if have sava in controllerMethodParam var
+             */
+            if (!empty($url[2]))
+                $this->controllerMethodParam = $url[2];
         }
     }
 }
