@@ -1,8 +1,8 @@
 <?php
 
-class HomeController
+class HomeController implements basicController
 {
-    public static function index()
+    public function index()
     {
         include_once './view/home.php';
     }

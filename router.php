@@ -74,7 +74,7 @@ namespace App {
             } else {
                 // TODO:
                 // default method
-                $this->controllerMethod = call_user_func(array('homeController', 'index'));
+                $this->controllerMethod = call_user_func(array($this->controller, 'index'));
             }
         }
 

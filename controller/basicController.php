@@ -2,5 +2,5 @@
 
 interface BasicController
 {
-    public static function index();
+    public function index();
 }
