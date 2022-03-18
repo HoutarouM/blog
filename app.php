@@ -2,7 +2,7 @@
 
 use App as A;
 
-require_once('router.php');
+require 'router.php';
 
 class App
 {

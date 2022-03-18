@@ -2,8 +2,8 @@
 
 class HomeController
 {
-    public function __construct()
+    public static function index()
     {
-        echo "Hello I'm a HomeController";
+        include_once './view/home.php';
     }
 };

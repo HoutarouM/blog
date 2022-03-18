@@ -2,6 +2,8 @@
 
 namespace App {
 
+    require './controller/basicController.php';
+
     class Router
     {
         private $controller;
@@ -32,6 +34,7 @@ namespace App {
                 return explode("/", trim($url, '/'));
             } else {
                 $_GET['url'][0] = 'home';
+
                 return $_GET['url'];
             }
         }
@@ -41,13 +44,16 @@ namespace App {
             /**
              * Check is controller file exists
              * if exists require controller file and create controller
+             * and unset $url[0] variable
              */
             if (file_exists('./controller/' . $url[0] . 'Controller.php')) {
-                require_once('./controller/' . $url[0] . 'Controller.php');
+                require_once './controller/' . $url[0] . 'Controller.php';
 
                 $this->controller = ucfirst($url[0]) . 'Controller';
 
                 $this->controller = new $this->controller();
+
+                unset($url[0]);
             }
 
             // TODO:
@@ -64,10 +70,11 @@ namespace App {
              */
             if (!empty($url[1])) {
                 if (method_exists($this->controller, $url[1]))
-                    $this->controllerMethod = call_user_func($this->controller->$url[1], $this->controllerMethodParam);
+                    $this->controllerMethod = call_user_func(array($this->controller, $url[1]), $this->controllerMethodParam);
             } else {
                 // TODO:
                 // default method
+                $this->controllerMethod = call_user_func(array('homeController', 'index'));
             }
         }
 
