@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>My forum</title>
-
+    <title><?= WEBSITE_TITLE ?></title>
     <link rel="stylesheet" href="./view/styles/style.css">
 </head>
 

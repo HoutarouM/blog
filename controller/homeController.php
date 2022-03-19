@@ -1,9 +1,32 @@
 <?php
 
-class HomeController implements basicController
+namespace App\Controller;
+
+class HomeController implements BasicController
 {
-    public function index()
+    protected $model;
+
+    public function index($url)
     {
-        include_once './view/home.php';
+        $this->getModel();
+
+        if (file_exists('./view/' . $url . '.php')) {
+            include './view/' . $url . '.php';
+        } else {
+            // TODO: error page don't exists
+        }
+    }
+
+    public function getModel($url = 'posts')
+    {
+        if (file_exists('./model' . $url . 'Model.php')) {
+            include './model' . $url . 'Model.php';
+
+            $this->model = trim('App\Model\ ', ' ') . ucfirst($url) . 'Model';
+
+            $this->model = new $this->model();
+        } else {
+            // TODO: error page don't exists
+        }
     }
 };

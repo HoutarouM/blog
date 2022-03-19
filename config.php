@@ -1,5 +1,8 @@
 <?php
 
+// Website title
+define('WEBSITE_TITLE', 'My forum');
+
 // Database data
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'forum');

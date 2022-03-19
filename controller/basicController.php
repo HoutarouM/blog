@@ -1,6 +1,17 @@
 <?php
 
+namespace App\Controller;
+
+/** All controllers must have:
+ *  - model var
+ *  - index method
+ *  - getModel method
+ */
 interface BasicController
 {
-    public function index();
+    protected $model;
+
+    public function index($url);
+
+    public function getModel($url);
 }

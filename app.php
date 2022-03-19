@@ -1,6 +1,6 @@
 <?php
 
-use App as A;
+namespace App;
 
 require_once './config.php';
 require_once './router.php';
@@ -11,7 +11,6 @@ class App
 {
     public function __construct()
     {
-        $router = new A\Router();
-        $db = new A\Database();
+        $router = new Router();
     }
 }
