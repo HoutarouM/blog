@@ -8,25 +8,37 @@ class PostsController implements BasicController
 
     public function render($url, $data = [])
     {
-        $this->getModel();
+        $m = $this->getModel($url);
+
+        if (!$m) {
+            exit();
+        }
 
         if (file_exists('./view/' . $url . '.php')) {
-            include './view/' . $url . '.php';
+            include_once './view/' . $url . '.php';
         } else {
-            // TODO: error page don't exists
+            $data['error_mes'] = 'Nie znałeziono strony :(';
+
+            include_once './view/error.php';
         }
     }
 
     public function getModel($url = 'posts')
     {
-        if (file_exists('./model' . $url . 'Model.php')) {
-            include './model' . $url . 'Model.php';
+        if (file_exists('./model/' . $url . 'Model.php')) {
+            include './model/' . $url . 'Model.php';
 
             $this->model = trim('App\Model\ ', ' ') . ucfirst($url) . 'Model';
 
             $this->model = new $this->model();
+
+            return true;
         } else {
-            // TODO: error page don't exists
+            $data['error_mes'] = 'Nie znałeziono strony :(';
+
+            include './view/error.php';
+
+            return false;
         }
     }
 };
