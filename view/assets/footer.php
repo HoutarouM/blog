@@ -1,7 +1,7 @@
 </main>
 
 <footer>
-    <h2>Footer</h2>
+    <h3>My forum</h3>
 </footer>
 </body>
 
