@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
-class HomeController implements BasicController
+class PostsController implements BasicController
 {
     protected $model;
 
-    public function index($url)
+    public function render($url, $data = [])
     {
         $this->getModel();
 
