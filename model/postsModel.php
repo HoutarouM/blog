@@ -2,6 +2,9 @@
 
 namespace App\Model;
 
-// TODO: create PostsModel
+require './model/basicModel.php';
 
-// class PostsModel extends
+// TODO: create posts model
+class PostsModel extends BasicModel
+{
+}

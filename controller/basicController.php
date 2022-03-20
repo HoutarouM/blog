@@ -9,8 +9,6 @@ namespace App\Controller;
  */
 interface BasicController
 {
-    protected $model;
-
     public function index($url);
 
     public function getModel($url);

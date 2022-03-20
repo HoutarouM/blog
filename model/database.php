@@ -23,11 +23,13 @@ class Database
 
     public function read($query, $args = [])
     {
+        // TODO: add query execute
         $con = $this->db_connect();
     }
 
     public function write($query, $args = [])
     {
+        // TODO: add query execute
         $con = $this->db_connect();
     }
 }
