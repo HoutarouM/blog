@@ -1,0 +1,7 @@
+/* styles for main content component */
+
+main .main-content {
+  margin: 0 auto;
+  max-width: 80%;
+  padding: 1%;
+}
