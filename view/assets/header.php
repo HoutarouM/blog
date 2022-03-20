@@ -15,8 +15,10 @@
         </div>
 
         <div class="header-links">
-            <a href="#">Login</a>
-            <a href="#">Register</a>
+            <ul>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Register</a></li>
+            </ul>
         </div>
     </header>
 
