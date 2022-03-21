@@ -9,7 +9,7 @@ class Router
 {
     private $controller;
     private $controllerMethod;
-    private $controllerMethodParams = [];
+    private $controllerMethodParam;
 
     public function __construct()
     {
@@ -32,12 +32,12 @@ class Router
         if (!empty($_GET['url'])) {
             $url = filter_var($_GET['url'], FILTER_SANITIZE_URL);
 
-            return explode("/", trim($url, '/'));
+            $_GET['url'] = explode("/", trim($url, '/'));
         } else {
-            $_GET['url'][0] = 'posts';
-
-            return $_GET['url'];
+            $_GET['url'][0] = 'posts';            
         }
+
+        return $_GET['url'];
     }
 
     private function getController($url)
@@ -71,7 +71,7 @@ class Router
          */
         if (!empty($url[1])) {
             if (method_exists($this->controller, $url[1]))
-                $this->controllerMethod = call_user_func_array(array($this->controller, $url[1]), $this->controllerMethodParams);
+                $this->controllerMethod = call_user_func(array($this->controller, $url[1]), $this->controllerMethodParam);
         } else {
             // TODO:
             // default method
@@ -87,13 +87,7 @@ class Router
 
         // TODO: do something with this ifs
         if (!empty($url[1])) {
-            array_push($this->controllerMethodParams, $url[1]);
-            if (!empty($url[2])) {
-                array_push($this->controllerMethodParams, $url[2]);
-                if (!empty($url[3])) {
-                    array_push($this->controllerMethodParams, $url[3]);
-                }
-            }
+            array_push($this->controllerMethodParam, $url[1]);
         }
     }
 }
