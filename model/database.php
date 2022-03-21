@@ -13,6 +13,8 @@ class Database
 
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            return $conn;
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
 
@@ -25,6 +27,11 @@ class Database
     {
         // TODO: add query execute
         $con = $this->db_connect();
+
+        $stmt = $con->prepare($query);
+        $stmt->execute($args[0], $args[1]);
+
+        $con = null;
     }
 
     public function write($query, $args = [])

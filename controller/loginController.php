@@ -41,4 +41,19 @@ class LoginController implements BasicController
             return false;
         }
     }
+
+    private function login($login, $pass)
+    {
+        $pass = hash('sha512', $_POST['pass']);
+
+        $res = $this->model->login($login, $pass);
+
+        if ($res) {
+            $_SESSION['login'] = $login;
+
+            header('location: 2pM/forum_study/');
+        } else {
+            echo 'Zly login lub haslo';
+        }
+    }
 };
