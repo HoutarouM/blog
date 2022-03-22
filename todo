@@ -9,11 +9,8 @@ TODO:
     - komentowanie
     - hierarcjia
     
-    - data to config file
-    - add styles to register and login views
     - add filters for forms
     - rewrite registration to mvc
-    - rewrite login to mvc
 
 DONE:
   Baza danych:

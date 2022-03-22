@@ -1,6 +1,11 @@
 /* styles for main content component */
 
+main {
+  background-color: #d9f9ff;
+}
+
 main .main-content {
+  background-color: #def7fc;
   margin: 0 auto;
   max-width: 80%;
   padding: 1%;

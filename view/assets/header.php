@@ -10,14 +10,16 @@
 <body>
     <header>
         <!-- TODO: change font-family for logo -->
-        <div class="site-logo">
-            <h1>『My Forum』</h1>
-        </div>
+        <a href="/php/forum_study/">
+            <div class="site-logo">
+                <h1>『My Forum』</h1>
+            </div>
+        </a>
 
         <div class="header-links">
             <ul>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Register</a></li>
+                <li><a href="login">Login</a></li>
+                <li><a href="register">Register</a></li>
             </ul>
         </div>
     </header>
