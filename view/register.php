@@ -21,35 +21,16 @@
             !empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['pass'])
             && !empty($_POST['r_pass'])
         ) {
-            $con = mysqli_connect('localhost', 'root', '', 'forum');
 
-            if ($_POST['pass'] != $_POST['pass']) {
+            if ($_POST['pass'] != $_POST['r_pass']) {
                 exit();
             }
 
-            $login = $_POST['login'];
-            $email = $_POST['email'];
-
-            $pass = $_POST['pass'];
-            $pass = hash('sha512', $pass);
-
-            $chech_login_query = "SELECT * FROM `users` WHERE `nick` = $login";
-
-            $res = mysqli_query($con, $chech_login_query);
-
-            if (mysqli_fetch_array($res)) {
+            if (!$this->register($_POST['login'], $_POST['email'], $_POST['pass'])) {
                 echo "Nick jest zajety";
-
-                exit();
             }
 
-            $add_user_query = "INSERT INTO `users`(`id`, `email`, `haslo`, `nick`) VALUES (null, '$email', '$pass', '$login');";
-
-            mysqli_query($con, $add_user_query);
-
-            mysqli_close($con);
-
-            header('location: index.php');
+            // header('location: 2pM/forum_study/');
         }
         ?>
     </div>

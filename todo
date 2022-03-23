@@ -9,8 +9,10 @@ TODO:
     - komentowanie
     - hierarcjia
     
+    - add html pattern Attribute for forms inputs 
     - add filters for forms
-    - rewrite registration to mvc
+    
+    - add component in registration process
 
 DONE:
   Baza danych:

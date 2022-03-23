@@ -41,4 +41,19 @@ class RegisterController implements BasicController
             return false;
         }
     }
+
+    private function register($login, $email, $pass)
+    {
+        $pass = hash('sha512', $_POST['pass']);
+
+        $res = $this->model->register($login, $email, $pass);
+
+        if ($res) {
+            $_SESSION['login'] = $login;
+
+            return true;
+        } else {
+            return false;
+        }
+    }
 };

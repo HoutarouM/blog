@@ -18,25 +18,41 @@ class Database
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
 
-            // TODO:
-            // show error page db connection error
+            include './view/error.php';
         }
     }
 
     public function read($query, $args = [])
     {
-        // TODO: add query execute
         $con = $this->db_connect();
 
         $stmt = $con->prepare($query);
-        $stmt->execute($args[0], $args[1]);
+
+        for ($i = 1; $i <= count($args); $i++) {
+            $stmt->bindValue($i, $args[$i - 1]);
+        }
+
+        $stmt->execute();
 
         $con = null;
+
+        return $stmt;
     }
 
     public function write($query, $args = [])
     {
-        // TODO: add query execute
         $con = $this->db_connect();
+
+        $stmt = $con->prepare($query);
+
+        print_r($args);
+
+        for ($i = 1; $i <= count($args); $i++) {
+            $stmt->bindValue($i, $args[$i - 1]);
+        }
+
+        $stmt->execute();
+
+        $con = null;
     }
 }
