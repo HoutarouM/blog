@@ -14,7 +14,7 @@ class RegisterModel extends BasicModel
 
         $register_query = "INSERT INTO `users`(`id`, `email`, `password`, `nick`) VALUES (null, ?, ?, ?);";
 
-        $this->write($register_query, [$login, $email, $pass]);
+        $this->write($register_query, [$email, $pass, $login]);
 
         return true;
     }

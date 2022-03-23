@@ -44,7 +44,7 @@ class RegisterController implements BasicController
 
     private function register($login, $email, $pass)
     {
-        $pass = hash('sha512', $_POST['pass']);
+        $pass = hash('sha512', $pass);
 
         $res = $this->model->register($login, $email, $pass);
 

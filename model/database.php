@@ -45,8 +45,6 @@ class Database
 
         $stmt = $con->prepare($query);
 
-        print_r($args);
-
         for ($i = 1; $i <= count($args); $i++) {
             $stmt->bindValue($i, $args[$i - 1]);
         }
