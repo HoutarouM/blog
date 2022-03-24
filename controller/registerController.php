@@ -44,6 +44,10 @@ class RegisterController implements BasicController
 
     private function register($login, $email, $pass)
     {
+        // hash password
+        // execute model method register
+        // if nick is free create user
+
         $pass = hash('sha512', $pass);
 
         $res = $this->model->register($login, $email, $pass);

@@ -15,6 +15,10 @@
         </form>
 
         <?php
+        // checking is password input value same to repeat password value
+        // execute register method
+        // if user name is not used already register user and redirect to main page
+        // else view message
 
         if (
             !empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['pass'])
@@ -29,6 +33,8 @@
 
             if (!$this->register($_POST['login'], $_POST['email'], $_POST['pass'])) {
                 echo "Nick is already used.";
+
+                exit();
             }
 
             header('location: /php/forum_study/');

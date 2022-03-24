@@ -8,6 +8,8 @@ class RegisterModel extends BasicModel
 {
     public function register($login, $email, $pass)
     {
+        // check is user nick is already used
+        // if not create a new user
         if (!$this->check_is_nick_already_used($login)) {
             return false;
         }

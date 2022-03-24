@@ -12,6 +12,7 @@
         </form>
 
         <?php
+        // execute controller login method
 
         if (!empty($_POST['login']) && !empty($_POST['pass'])) {
             $this->login($_POST['login'], $_POST['pass']);
