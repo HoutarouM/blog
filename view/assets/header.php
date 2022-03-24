@@ -18,8 +18,17 @@
 
         <div class="header-links">
             <ul>
-                <li><a href="login">Login</a></li>
-                <li><a href="register">Register</a></li>
+                <?php if (!$_SESSION['login']) : ?>
+                    <!-- if user not logged view login and register buttons  -->
+                    <li><a href="login">Login</a></li>
+                    <li><a href="register">Register</a></li>
+
+                <?php else : ?>
+                    <!-- if user logged in view user name button and log out button -->
+                    <li><a href="login"><?= $_SESSION['login'] ?></a></li>
+                    <li><a href="register">Log out</a></li>
+
+                <?php endif; ?>
             </ul>
         </div>
     </header>
