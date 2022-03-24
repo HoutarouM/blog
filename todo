@@ -1,23 +1,16 @@
-TODO:
-    - Logowanie
-      - sesja
-    - Rejestracja
-      - moc hasla
-      - hashowanie
+TODO:    
     - Dodawanie postow - tylko dla zalogowanych
     - Wyswetlanie postow - dla wszystkich
     - komentowanie
     - hierarcjia
     
-    - add html pattern Attribute for forms inputs 
-    - add filters for forms
     - create log out
     - create add posts
 
 DONE:
   Baza danych:
       - nazwa forum
-  tabele:
+  Tabele:
       - Posty
           - id
         - tytul
@@ -33,8 +26,13 @@ DONE:
         - id
         - id_uzytkownika
         - id_posta
+  Logowanie
+      - sesja
+  Rejestracja
+      - moc hasla
+      - hashowanie
 
-      - dane do bazy w osobnym pliku
+dane do bazy w osobnym pliku
 
 Links:
   -color palette:

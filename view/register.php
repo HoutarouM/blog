@@ -6,10 +6,10 @@
     <div class="register-form">
 
         <form action="" method="post">
-            <input type="text" placeholder="Enter login" name="login" require>
-            <input type="text" placeholder="Enter email" name="email" require>
-            <input type="password" placeholder="Enter password" name="pass" require>
-            <input type="password" placeholder="Repeate password" name="r_pass" require>
+            <input type="text" name="login" id="login" placeholder="Enter login" pattern="\d[A-Z][a-z]{1,15}" title="Login size is 15 symbols max only lowercase or uppercase a-z and." require>
+            <input type="email" name="email" id="email" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Must be in the following order: characters@characters.domain." require>
+            <input type="password" name="pass" id="pass" placeholder="Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters." require>
+            <input type="password" name="r_pass" id="r_pass" placeholder="Repeat password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters." require>
 
             <input type="submit" value="Register">
         </form>
@@ -40,7 +40,32 @@
             header('location: /php/forum_study/');
         }
         ?>
+
+        <script>
+            // inputs validation
+            let login = document.getElementById('login');
+            let email = document.getElementById('email');
+            let pass = document.getElementById('pass');
+            let r_pass = document.getElementById('pass');
+
+            login.oninvalid = (e) => {
+                e.target.setCustomValidity(login.title);
+            }
+
+            email.oninvalid = (e) => {
+                e.target.setCustomValidity(email.title);
+            }
+
+            pass.oninvalid = (e) => {
+                e.target.setCustomValidity(pass.title);
+            }
+
+            r_pass.oninvalid = (e) => {
+                e.target.setCustomValidity(r_pass.title);
+            }
+        </script>
     </div>
+
 </div>
 
 <?php include_once './view/assets/footer.php'; ?>
