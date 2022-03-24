@@ -6,10 +6,16 @@ require './model/basicModel.php';
 
 class LoginModel extends BasicModel
 {
-    protected function login($login, $pass)
+    public function login($login, $pass)
     {
-        $login_query = "SELECT * FROM `users` WHERE `nick` = ? AND `haslo` = ?";
+        $login_query = "SELECT * FROM `users` WHERE `nick` = ? AND `password` = ?";
 
-        $this->read($login_query, [$login, $pass]);
+        $stmt = $this->read($login_query, [$login, $pass]);
+
+        if ($stmt->fetchAll()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

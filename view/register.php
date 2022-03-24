@@ -15,7 +15,6 @@
         </form>
 
         <?php
-        // TODO: rewrite to mvc
 
         if (
             !empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['pass'])
@@ -23,14 +22,16 @@
         ) {
 
             if ($_POST['pass'] != $_POST['r_pass']) {
+                echo 'Password and repeat password must be the same.';
+
                 exit();
             }
 
             if (!$this->register($_POST['login'], $_POST['email'], $_POST['pass'])) {
-                echo "Nick jest zajety";
+                echo "Nick is already used.";
             }
 
-            // header('location: 2pM/forum_study/');
+            header('location: /php/forum_study/');
         }
         ?>
     </div>
