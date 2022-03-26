@@ -1,10 +1,10 @@
-TODO:    
-    - Dodawanie postow - tylko dla zalogowanych
+TODO:        
     - Wyswetlanie postow - dla wszystkich
     - komentowanie
     - hierarcjia    
     
     - create add posts
+    - validate
 
 DONE:
   Baza danych:
@@ -31,9 +31,9 @@ DONE:
       - moc hasla
       - hashowanie
   Dodatkowo:
-      - create log out
+      - Dodawanie postow - tylko dla zalogowanych
 
-dane do bazy w osobnym pliku
+  Dane do bazy w osobnym pliku
 
 Links:
   -color palette:

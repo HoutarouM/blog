@@ -6,7 +6,8 @@
   width: 20%;
 }
 
-.form h2 {
+.form h2,
+p {
   color: #4ea8de;
 }
 
@@ -18,7 +19,8 @@ form {
 
 form input[type="text"],
 input[type="password"],
-input[type="email"] {
+input[type="email"],
+textarea {
   margin: 1%;
   padding: 12px;
   border: 1px solid #ccc;

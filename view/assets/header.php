@@ -20,13 +20,13 @@
             <ul>
                 <?php if (!array_key_exists('login', $_SESSION)) : ?>
                     <!-- if user not logged view login and register buttons  -->
+
                     <li><a href="login">Login</a></li>
                     <li><a href="register">Register</a></li>
                 <?php else : ?>
                     <!-- if user logged in view user name button and log out button -->
 
-                    <!-- TODO: create create add posts -->
-                    <li><a href="#">Add post</a></li>
+                    <li><a href="addpost">Add post</a></li>
                     <li><a href="logout">Logout</a></li>
                 <?php endif; ?>
             </ul>
