@@ -47,6 +47,17 @@ class AddpostController implements BasicController
         }
     }
 
+    private function getCategories()
+    {
+        $categories = $this->model->getCategories();
+
+        if (empty($categories)) {
+            return false;
+        }
+
+        return $categories;
+    }
+
     private function addPost()
     {
         // TODO: create add post method
