@@ -6,7 +6,7 @@ class PostsController implements BasicController
 {
     protected $model;
 
-    public function render($url, $data = [])
+    public function index($url, $data = [])
     {
         $m = $this->getModel($url);
 
@@ -14,6 +14,11 @@ class PostsController implements BasicController
             exit();
         }
 
+        $this->render($url);
+    }
+
+    private function render($url)
+    {
         if (file_exists('./view/' . $url . '.php')) {
             include_once './view/' . $url . '.php';
         } else {

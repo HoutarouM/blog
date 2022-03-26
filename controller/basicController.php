@@ -9,7 +9,5 @@ namespace App\Controller;
  */
 interface BasicController
 {
-    public function render($url, $data);
-
-    public function getModel($url);
+    public function index($url, $data);
 }

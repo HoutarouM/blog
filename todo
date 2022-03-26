@@ -2,9 +2,8 @@ TODO:
     - Dodawanie postow - tylko dla zalogowanych
     - Wyswetlanie postow - dla wszystkich
     - komentowanie
-    - hierarcjia
+    - hierarcjia    
     
-    - create log out
     - create add posts
 
 DONE:
@@ -26,11 +25,13 @@ DONE:
         - id
         - id_uzytkownika
         - id_posta
-  Logowanie
+  Logowanie:
       - sesja
-  Rejestracja
+  Rejestracja:
       - moc hasla
       - hashowanie
+  Dodatkowo:
+      - create log out
 
 dane do bazy w osobnym pliku
 

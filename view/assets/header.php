@@ -18,18 +18,16 @@
 
         <div class="header-links">
             <ul>
-                <?php if (!$_SESSION['login']) : ?>
+                <?php if (!array_key_exists('login', $_SESSION)) : ?>
                     <!-- if user not logged view login and register buttons  -->
                     <li><a href="login">Login</a></li>
                     <li><a href="register">Register</a></li>
-
                 <?php else : ?>
                     <!-- if user logged in view user name button and log out button -->
 
-                    <!-- TODO: create log out and  create add posts -->
+                    <!-- TODO: create create add posts -->
                     <li><a href="#">Add post</a></li>
-                    <li><a href="#">Log out</a></li>
-
+                    <li><a href="logout">Logout</a></li>
                 <?php endif; ?>
             </ul>
         </div>

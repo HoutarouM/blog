@@ -34,7 +34,7 @@ class Router
 
             $_GET['url'] = explode("/", trim($url, '/'));
         } else {
-            $_GET['url'][0] = 'posts';            
+            $_GET['url'][0] = 'posts';
         }
 
         return $_GET['url'];
@@ -75,7 +75,7 @@ class Router
         } else {
             // TODO:
             // default method
-            $this->controllerMethod = call_user_func(array($this->controller, 'render'), $url[0]);
+            $this->controllerMethod = call_user_func(array($this->controller, 'index'), $url[0]);
         }
     }
 

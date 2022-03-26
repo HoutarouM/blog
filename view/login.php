@@ -5,7 +5,7 @@
         <h2>Login</h2>
 
         <form action="" method="post">
-            <input type="text" name="login" id="login" placeholder="Enter login" pattern="\d[A-Z][a-z]{1,15}" title="Login size is 15 symbols max only lowercase or uppercase a-z and." required>
+            <input type="text" name="login" id="login" placeholder="Enter login" pattern="[A-Z][a-z]{,15}" title="Login size is 15 symbols max only lowercase or uppercase a-z and." required>
             <input type="password" name="pass" id="pass" placeholder="Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters." require>
 
             <input type="submit" value="Login">
@@ -22,6 +22,7 @@
 
         <script>
             // inputs validation
+
             let login = document.getElementById('login');
             let pass = document.getElementById('pass');
 

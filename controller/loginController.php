@@ -6,7 +6,7 @@ class LoginController implements BasicController
 {
     protected $model;
 
-    public function render($url, $data = [])
+    public function index($url, $data = [])
     {
         $m = $this->getModel($url);
 
@@ -14,6 +14,11 @@ class LoginController implements BasicController
             return;
         }
 
+        $this->render($url);
+    }
+
+    private function render($url)
+    {
         if (file_exists('./view/' . $url . '.php')) {
             include_once './view/' . $url . '.php';
         } else {
