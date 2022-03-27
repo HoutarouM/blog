@@ -25,19 +25,11 @@
             && !empty($_POST['r_pass'])
         ) {
 
-            if ($_POST['pass'] != $_POST['r_pass']) {
-                echo 'Password and repeat password must be the same.';
-
-                exit();
-            }
-
-            if (!$this->register($_POST['login'], $_POST['email'], $_POST['pass'])) {
+            if ($this->register($_POST['login'], $_POST['email'], $_POST['pass'], $_POST['r_pass'])) {
+                header('location: /php/forum_study/');
+            } else {
                 echo "Nick is already used.";
-
-                die();
             }
-
-            header('location: /php/forum_study/');
         }
         ?>
 

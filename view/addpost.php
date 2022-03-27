@@ -40,6 +40,8 @@
         // check is category is chosen
         if (!$this->addDiscussion($_POST['category'], $_POST['author_id'], $_POST['title'], $_POST['post_text'])) {
             echo 'Chose category';
+        } else {
+            header('Location: index.php');
         }
     }
     ?>

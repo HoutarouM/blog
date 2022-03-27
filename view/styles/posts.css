@@ -2,6 +2,7 @@
 
 .main-content .discussions .discussion {
   padding: 1%;
+  margin: 1% 0;
   border: 1px solid #64dfdf;
 }
 

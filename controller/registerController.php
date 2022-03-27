@@ -47,11 +47,17 @@ class RegisterController implements BasicController
         }
     }
 
-    private function register($login, $email, $pass)
+    private function register($login, $email, $pass, $r_pass)
     {
         // hash password
         // execute model method register
         // if nick is free create user
+
+        if ($pass != $r_pass) {
+            echo 'Passwords must be equal to each other';
+
+            return false;
+        }
 
         $pass = hash('sha512', $pass);
 

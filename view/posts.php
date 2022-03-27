@@ -4,18 +4,27 @@
     <h2>Last Discussions</h2>
 
     <div class="discussions">
-        <!-- TODO: create a discussions -->
 
-        <div class="discussion">
-            <a href="#">
-                <h2>Title</h3>
-            </a>
-            <div class="post-data">
-                <p>Author: </p>
-                <p>Likes: </p>
+        <?php $posts_data = $this->getPostsData();
+
+        if (!$posts_data) {
+            echo "No posts";
+        }
+
+        foreach ($posts_data as $post_data) : ?>
+
+            <div class="discussion">
+                <a href="post/<?= $post_data['id'] ?>">
+                    <h2><?= $post_data['tytul'] ?></h2>
+                </a>
+                <div class="post-data">
+                    <p>Author: <?= $this->getAuthorData($post_data['id']) ?></p>
+                    <p>Likes: <?= $this->getLikesData($post_data['id']) ?></p>
+                </div>
+                <p><?= $post_data['text'] ?></p>
             </div>
-            <p>Text</p>
-        </div>
+
+        <?php endforeach; ?>
     </div>
 
     <!-- TODO: create nav component -->

@@ -46,4 +46,37 @@ class PostsController implements BasicController
             return false;
         }
     }
+
+    private function getPostsData()
+    {
+        $posts_data = $this->model->getPostsData();
+
+        if (empty($posts_data)) {
+            return false;
+        }
+
+        return $posts_data;
+    }
+
+    private function getAuthorData($post_id)
+    {
+        $author_data = $this->model->getAuthorData($post_id);
+
+        if (empty($author_data)) {
+            return false;
+        }
+
+        return $author_data[0][0];
+    }
+
+    private function getLikesData($post_id)
+    {
+        $likes_data = $this->model->getLikesData($post_id);
+
+        if (empty($likes_data)) {
+            return false;
+        }
+
+        return $likes_data[0][0];
+    }
 };
