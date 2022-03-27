@@ -33,9 +33,11 @@
 
     <?php
     // execute controller addPost method
+    // check is input is not empty
 
     if (!empty($_POST['author_id']) && !empty($_POST['title']) && !empty($_POST['post_text'])) {
 
+        // check is category is chosen
         if (!$this->addDiscussion($_POST['category'], $_POST['author_id'], $_POST['title'], $_POST['post_text'])) {
             echo 'Chose category';
         }

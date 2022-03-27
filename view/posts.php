@@ -5,6 +5,17 @@
 
     <div class="discussions">
         <!-- TODO: create a discussions -->
+
+        <div class="discussion">
+            <a href="#">
+                <h2>Title</h3>
+            </a>
+            <div class="post-data">
+                <p>Author: </p>
+                <p>Likes: </p>
+            </div>
+            <p>Text</p>
+        </div>
     </div>
 
     <!-- TODO: create nav component -->

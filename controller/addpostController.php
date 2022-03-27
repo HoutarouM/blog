@@ -71,8 +71,7 @@ class AddpostController implements BasicController
 
     private function addDiscussion($category_id, $author_id, $title, $text)
     {
-        // TODO: create add post method
-
+        // if category is not chosen return false
         if ($category_id == 0) {
             return false;
         }

@@ -1,0 +1,29 @@
+/* main page posts style */
+
+.main-content .discussions .discussion {
+  padding: 1%;
+  border: 1px solid #64dfdf;
+}
+
+.main-content .discussions .discussion a {
+  text-decoration: underline;
+  text-decoration-color: #4ea8de;
+}
+
+.main-content .discussions .discussion h2 {
+  color: #4ea8de;
+}
+
+.main-content .discussions .discussion .post-data {
+  display: flex;
+}
+
+.main-content .discussions .discussion .post-data p {
+  color: grey;
+  padding: 0.5%;
+}
+
+.main-content .discussions .discussion p {
+  color: black;
+  padding: 1%;
+}
