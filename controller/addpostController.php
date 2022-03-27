@@ -58,8 +58,25 @@ class AddpostController implements BasicController
         return $categories;
     }
 
-    private function addPost()
+    private function getAutourId($login)
+    {
+        $author_id = $this->model->getAutourId($login);
+
+        if (!$author_id) {
+            return false;
+        }
+
+        return $author_id[0];
+    }
+
+    private function addDiscussion($category_id, $author_id, $title, $text)
     {
         // TODO: create add post method
+
+        if ($category_id == 0) {
+            return false;
+        }
+
+        $res = $this->model->addDiscussion($category_id, $author_id, $title, $text);
     }
 };

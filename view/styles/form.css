@@ -20,7 +20,8 @@ form {
 form input[type="text"],
 input[type="password"],
 input[type="email"],
-textarea {
+textarea,
+select {
   margin: 1%;
   padding: 12px;
   border: 1px solid #ccc;

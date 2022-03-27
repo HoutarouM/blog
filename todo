@@ -3,8 +3,10 @@ TODO:
     - komentowanie
     - hierarcjia    
     
-    - create add posts
     - validate
+    - add comments to add discussion
+    - create nav component
+    - fix footer in login and register
 
 DONE:
   Baza danych:

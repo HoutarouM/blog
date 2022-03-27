@@ -4,19 +4,21 @@
     <!-- TODO: add styles -->
 
     <h2>Add Discussion</h2>
-    <p>Autor: <?= $_SESSION['login'] ?></p>
 
     <form action="" method="post">
-        <input type="hidden" name="author_name" value="<?= $_SESSION['login'] ?>">
+        <input type="hidden" name="author_id" value="<?= $this->getAutourId($_SESSION['login'])[0] ?>">
 
-        Category: <select name="category">
+        <input type="text" name="title" placeholder="Discussion title">
+
+        <p>Category:</p>
+        <select name="category">
             <?php
             $categories = $this->getCategories();
 
             if (!$categories) : ?>
-                <option value="">No category</option>
+                <option value="0">No categories</option>
             <?php else : ?>
-                <option value="">Chose category</option>
+                <option value="0">Chose category</option>
 
                 <?php foreach ($categories as $category) : ?>
                     <option value="<?= $category[0] ?>"><?= $category[1] ?></option>
@@ -32,7 +34,12 @@
     <?php
     // execute controller addPost method
 
+    if (!empty($_POST['author_id']) && !empty($_POST['title']) && !empty($_POST['post_text'])) {
 
+        if (!$this->addDiscussion($_POST['category'], $_POST['author_id'], $_POST['title'], $_POST['post_text'])) {
+            echo 'Chose category';
+        }
+    }
     ?>
 
     <script>

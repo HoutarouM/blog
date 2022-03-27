@@ -34,7 +34,7 @@
             if (!$this->register($_POST['login'], $_POST['email'], $_POST['pass'])) {
                 echo "Nick is already used.";
 
-                exit();
+                die();
             }
 
             header('location: /php/forum_study/');
