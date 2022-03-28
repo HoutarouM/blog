@@ -48,4 +48,19 @@ class PostsModel extends BasicModel
             return false;
         }
     }
+
+    public function getCategories()
+    {
+        $get_categories_query = "SELECT * FROM `kategorie`";
+
+        $stmt = $this->read($get_categories_query, []);
+
+        $data = $stmt->fetchAll();
+
+        if ($data) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
 }

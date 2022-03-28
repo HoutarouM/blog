@@ -79,4 +79,9 @@ class PostsController implements BasicController
 
         return $likes_data[0][0];
     }
+
+    private function getCategories()
+    {
+        return $this->model->getCategories();
+    }
 };
