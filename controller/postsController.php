@@ -14,10 +14,10 @@ class PostsController implements BasicController
             exit();
         }
 
-        $this->render($url);
+        $this->render($url, $data);
     }
 
-    private function render($url)
+    private function render($url, $data = [])
     {
         if (file_exists('./view/' . $url . '.php')) {
             include_once './view/' . $url . '.php';
@@ -47,9 +47,11 @@ class PostsController implements BasicController
         }
     }
 
-    private function getPostsData()
+    private function getPostsData($data = [])
     {
-        $posts_data = $this->model->getPostsData();
+        print_r($data);
+
+        $posts_data = $this->model->getPostsData($data);
 
         if (empty($posts_data)) {
             return false;

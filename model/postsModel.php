@@ -6,11 +6,21 @@ require './model/basicModel.php';
 
 class PostsModel extends BasicModel
 {
-    public function getPostsData()
+    public function getPostsData($data = [])
     {
-        $get_post_data_query = "SELECT * FROM `posty`";
+        // if (empty($data)) {
+        //     $data = ['ASC', 0];
+        // }
 
-        $stmt = $this->read($get_post_data_query, []);
+        if ($data[1] == 0) {
+            $get_post_data_query = "SELECT * FROM `posty` WHERE JOIN kategorie ON kategorie.id = posty.id_kategorii ORDER BY ? ";
+
+            $stmt = $this->read($get_post_data_query, $data);
+        } else {
+            $get_post_data_query = "SELECT * FROM `posty` WHERE JOIN kategorie ON kategorie.id = posty.id_kategorii WHERE kategorie.kategoria = ? ORDER BY ? ";
+
+            $stmt = $this->read($get_post_data_query, $data);
+        }
 
         $data = $stmt->fetchAll();
 
