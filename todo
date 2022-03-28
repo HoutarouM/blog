@@ -1,11 +1,11 @@
 TODO:        
-    - Wyswetlanie postow - dla wszystkich
     - komentowanie
     - hierarcjia    
     
-    - validate
-    - create nav component
+    - filter forms by php
     - create post page
+    - basicController to class
+    - render and getModel methods to basicController
 
 DONE:
   Baza danych:
@@ -33,6 +33,8 @@ DONE:
       - hashowanie
   Dodatkowo:
       - Dodawanie postow - tylko dla zalogowanych
+  
+  - Wyswetlanie postow - dla wszystkich
 
   Dane do bazy w osobnym pliku
 
