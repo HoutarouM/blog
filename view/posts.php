@@ -6,7 +6,7 @@
     <div class="discussions-and-nav-wrapper">
         <div class="discussions">
 
-            <?php $posts_data = $this->getPostsData();
+            <?php $posts_data = $this->getPostsData($data);
 
             if (!$posts_data) {
                 echo "No posts";
