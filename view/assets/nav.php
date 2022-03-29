@@ -1,4 +1,7 @@
 <div class="nav">
+    <!-- TODO: create a sort -->
+    Not Working
+
     <form action="" method="get">
         <p>Category:</p>
         <select name="sortCategory">

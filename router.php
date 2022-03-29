@@ -8,16 +8,17 @@ require './controller/basicController.php';
 class Router
 {
     private $controller;
-    private $controllerMethod;
     private $controllerMethodParam;
 
     public function __construct()
     {
         $url = $this->splitURL();
 
+        // print_r($_GET);
+
         $this->getController($url);
 
-        $this->getControllerMethodParameters($url);
+        $this->getControllerMethodParameter();
 
         $this->getAndExecuteControllerMethod($url);
     }
@@ -55,11 +56,20 @@ class Router
             $this->controller = new $this->controller();
 
             unset($url[0]);
+        } else {
+            include_once './view/error.php';
         }
+    }
 
-        // TODO:
-        // add else view error page 
-        // error page is not found
+    private function getControllerMethodParameter()
+    {
+        /** Check is url contains method parameter
+         * if have sava in controllerMethodParam var
+         */
+
+        if (!empty($_GET['post'])) {
+            $this->controllerMethodParam =  $_GET['post'];
+        }
     }
 
     private function getAndExecuteControllerMethod($url)
@@ -69,25 +79,11 @@ class Router
          * if have checking if method exists
          * if exists execute method and write method to controllerMethod var
          */
-        if (!empty($url[1])) {
-            if (method_exists($this->controller, $url[1]))
-                $this->controllerMethod = call_user_func(array($this->controller, $url[1]), $this->controllerMethodParam);
+
+        if (!empty($this->controllerMethodParam)) {
+            $this->controllerMethod = call_user_func(array($this->controller, 'index'), $url[0], $this->controllerMethodParam);
         } else {
-            // TODO:
-            // default method
             $this->controllerMethod = call_user_func(array($this->controller, 'index'), $url[0]);
-        }
-    }
-
-    private function getControllerMethodParameters($url)
-    {
-        /** Check is url contains method parameter
-         * if have sava in controllerMethodParam var
-         */
-
-        // TODO: do something with this ifs
-        if (!empty($url[1])) {
-            array_push($this->controllerMethodParam, $url[1]);
         }
     }
 }

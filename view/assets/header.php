@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title><?= WEBSITE_TITLE ?></title>
+
     <link rel="stylesheet" type="text/css" href="./view/styles/main.css">
 </head>
 

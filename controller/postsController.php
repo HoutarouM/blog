@@ -5,13 +5,18 @@ namespace App\Controller;
 class PostsController implements BasicController
 {
     protected $model;
+    protected $data;
 
-    public function index($url, $data = [])
+    public function index($url, $data = null)
     {
+        if ($data != null) {
+            $this->data = $data;
+        }
+
         $m = $this->getModel($url);
 
         if (!$m) {
-            exit();
+            return false;
         }
 
         $this->render($url);
@@ -49,7 +54,13 @@ class PostsController implements BasicController
 
     private function getPostsData()
     {
-        $posts_data = $this->model->getPostsData();
+        $data = null;
+
+        if (!empty($this->data)) {
+            $data = $this->data;
+        }
+
+        $posts_data = $this->model->getPostsData($data);
 
         if (empty($posts_data)) {
             return false;

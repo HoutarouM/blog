@@ -15,7 +15,8 @@
             foreach ($posts_data as $post_data) : ?>
 
                 <div class="discussion">
-                    <a href="post/<?= $post_data['id'] ?>">
+
+                    <a href="?post=<?= $post_data['id'] ?>">
                         <h2><?= $post_data['tytul'] ?></h2>
                     </a>
                     <div class="post-data">

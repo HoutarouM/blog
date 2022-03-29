@@ -6,11 +6,17 @@ require './model/basicModel.php';
 
 class PostsModel extends BasicModel
 {
-    public function getPostsData()
+    public function getPostsData($data)
     {
-        $get_post_data_query = "SELECT * FROM `posty`";
+        if ($data != null) {
+            $get_post_data_query = "SELECT * FROM `posty` WHERE `id` = ? OR `id_postu_nadzendnego` = ?";
 
-        $stmt = $this->read($get_post_data_query, []);
+            $stmt = $this->read($get_post_data_query, [$data, $data]);
+        } else {
+            $get_post_data_query = "SELECT * FROM `posty`";
+
+            $stmt = $this->read($get_post_data_query, []);
+        }
 
         $data = $stmt->fetchAll();
 
