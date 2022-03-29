@@ -2,8 +2,8 @@ TODO:
     - komentowanie
     - hierarcjia    
     
+    - create a sort
     - filter forms by php
-    - create post page
     - basicController to class
     - render and getModel methods to basicController
 
