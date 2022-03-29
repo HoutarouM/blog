@@ -1,6 +1,5 @@
 TODO:        
-    - komentowanie
-    - hierarcjia    
+    - komentowanie        
     
     - create a sort
     - filter forms by php
@@ -33,6 +32,7 @@ DONE:
       - hashowanie
   Dodatkowo:
       - Dodawanie postow - tylko dla zalogowanych
+      - hierarcjia
   
   - Wyswetlanie postow - dla wszystkich
 
