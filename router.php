@@ -14,8 +14,6 @@ class Router
     {
         $url = $this->splitURL();
 
-        // print_r($_GET);
-
         $this->getController($url);
 
         $this->getControllerMethodParameter();
