@@ -80,6 +80,9 @@
                     && !empty($_POST['text'])
                 ) {
                     $this->addComment($_POST['parent_post_id'], $_POST['category_id'], $_POST['author_id'], $_POST['text']);
+
+                    // refresh page after submit with no warnings
+                    echo "<meta http-equiv='refresh' content='0'>";
                 }
                 ?>
             </div>
