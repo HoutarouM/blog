@@ -69,6 +69,17 @@ class PostsController implements BasicController
         return $posts_data;
     }
 
+    private function getAutourId($login)
+    {
+        $author_id = $this->model->getAutourId($login);
+
+        if (empty($author_id)) {
+            return false;
+        }
+
+        return $author_id[0];
+    }
+
     private function getAuthorData($post_id)
     {
         $author_data = $this->model->getAuthorData($post_id);
@@ -94,5 +105,17 @@ class PostsController implements BasicController
     private function getCategories()
     {
         return $this->model->getCategories();
+    }
+
+    private function addComment($parent_post_id, $category_id, $author_id, $text)
+    {
+        // if category is not chosen return false
+        if ($category_id == 0) {
+            return false;
+        }
+
+        $res = $this->model->addComment($parent_post_id, $category_id, $author_id, $text);
+
+        return true;
     }
 };

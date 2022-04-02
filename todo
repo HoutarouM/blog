@@ -1,10 +1,12 @@
 TODO:        
-    - komentowanie        
+    - komentowanie    
+    - add likes    
     
     - create a sort
     - filter forms by php
     - basicController to class
     - render and getModel methods to basicController
+    - add comments to discussion
 
 DONE:
   Baza danych:

@@ -13,7 +13,7 @@ class PostsModel extends BasicModel
 
             $stmt = $this->read($get_post_data_query, [$data, $data]);
         } else {
-            $get_post_data_query = "SELECT * FROM `posty`";
+            $get_post_data_query = "SELECT * FROM `posty` WHERE isNull(`id_postu_nadzendnego`);";
 
             $stmt = $this->read($get_post_data_query, []);
         }
@@ -39,6 +39,21 @@ class PostsModel extends BasicModel
         } else {
             return false;
         }
+    }
+
+    public function getAutourId($login)
+    {
+        $get_autour_id_query = "SELECT `id` FROM `users` WHERE `nick` = ?";
+
+        $stmt = $this->read($get_autour_id_query, [$login]);
+
+        $res = $stmt->fetchAll();
+
+        if (empty($res)) {
+            return false;
+        }
+
+        return $res;
     }
 
     public function getLikesData($post_id)
@@ -68,5 +83,14 @@ class PostsModel extends BasicModel
         } else {
             return false;
         }
+    }
+
+    public function addComment($parent_post_id, $category_id, $author_id, $text)
+    {
+        $add_comment_query = "INSERT INTO `posty`(`id`, `id_postu_nadzendnego`, `id_kategorii`, `id_autora`, `tytul`, `text`) VALUES (NULL, ?, ?, ?, NULL, ?);";
+
+        $this->write($add_comment_query, [$parent_post_id, $category_id, $author_id, $text]);
+
+        return true;
     }
 }

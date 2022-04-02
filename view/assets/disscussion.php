@@ -4,7 +4,9 @@
 
     <div class="discussions">
 
-        <?php $posts_data = $this->getPostsData();
+        <?php
+
+        $posts_data = $this->getPostsData();
 
         if (!$posts_data) {
             echo "No posts";
@@ -24,6 +26,14 @@
                     <p><?= substr($posts_data[$i]['text'], 0, 25) . '...' ?></p>
                 </div>
 
+                <?php
+                // category id for new comments
+                $category_id = $posts_data[$i]['id_kategorii'];
+
+                // parent post id for new comments
+                $parent_post_id = $posts_data[$i]['id'];
+                ?>
+
             <?php else : ?>
 
                 <div class="discussion">
@@ -31,26 +41,42 @@
                         <p>Author: <?= $this->getAuthorData($posts_data[$i]['id']) ?></p>
                         <p>Likes: <?= $this->getLikesData($posts_data[$i]['id']) ?></p>
                     </div>
-                    <p><?= substr($posts_data[$i]['text'], 0, 25) . '...' ?></p>
+                    <p><?= $posts_data[$i]['text'] ?></p>
                 </div>
 
             <?php endif; ?>
 
         <?php endfor; ?>
 
-        <div class="add-comment">
-            <h3>Add Comment</h3>
+        <?php if (!array_key_exists('login', $_SESSION)) : ?>
+            <!-- TODO: login block -->
 
-            <form action="" method="post">
-                <textarea name="comment-text" cols="10" rows="5"></textarea>
+        <?php else : ?>
+            <div class="add-comment">
+                <h3>Add Comment</h3>
 
-                <input type="submit" value="Add comment">
-            </form>
+                <form action="" method="post">
+                    <input type="hidden" name="parent_post_id" value="<?= $parent_post_id ?>">
+                    <input type="hidden" name="category_id" value="<?= $category_id ?>">
+                    <input type="hidden" name="author_id" value="<?= $this->getAutourId($_SESSION['login'])[0] ?>">
 
-            <?php
+                    <textarea name="text" cols="10" rows="5"></textarea>
 
-            ?>
-        </div>
+                    <input type="submit" value="Add comment">
+                </form>
+
+                <?php
+                if (
+                    !empty($_POST['parent_post_id'])
+                    && !empty($_POST['category_id'])
+                    && !empty($_POST['author_id'])
+                    && !empty($_POST['text'])
+                ) {
+                    $this->addComment($_POST['parent_post_id'], $_POST['category_id'], $_POST['author_id'], $_POST['text']);
+                }
+                ?>
+            </div>
+        <?php endif; ?>
     </div>
 
 </div>
