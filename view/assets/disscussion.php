@@ -49,7 +49,14 @@
         <?php endfor; ?>
 
         <?php if (!array_key_exists('login', $_SESSION)) : ?>
-            <!-- TODO: login block -->
+            <div class="login-pls">
+                <h3>Login or register, please</h3>
+
+                <div class="links">
+                    <a href="/php/forum_study/login">Login</a>
+                    <a href="/php/forum_study/register" class="reg">Register</a>
+                </div>
+            </div>
 
         <?php else : ?>
             <div class="add-comment">

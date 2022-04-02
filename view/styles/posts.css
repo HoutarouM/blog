@@ -28,3 +28,51 @@
   color: black;
   padding: 1%;
 }
+
+.main-content .discussions-and-nav-wrapper .login-pls{
+  padding: 1%;
+  border: 1px solid #56cfe1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-content .discussions-and-nav-wrapper .login-pls h3{
+  padding: 1%;
+}
+
+.main-content .discussions-and-nav-wrapper .login-pls .links{
+  display: flex;
+  padding: 1%;
+}
+
+.main-content .discussions-and-nav-wrapper .login-pls a{
+  display: block;
+  color: azure;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: #56cfe1;
+  margin: 1%;
+} 
+
+.main-content .discussions-and-nav-wrapper .login-pls .reg {
+  display: block;
+  color: #56cfe1;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border: 1px solid #56cfe1;
+  background-color: azure;
+  border-radius: 5%;
+  margin: 1%;
+} 
+
+.main-content .discussions-and-nav-wrapper .login-pls a:hover{
+  background-color: #64dfdf;
+}
+
+.main-content .discussions-and-nav-wrapper .login-pls .reg:hover {
+  color: azure;
+  background-color: #56cfe1;
+} 
