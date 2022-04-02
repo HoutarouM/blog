@@ -118,4 +118,9 @@ class PostsController implements BasicController
 
         return true;
     }
+
+    private function likePost($user_id, $post_id)
+    {
+        $this->model->likePost($user_id, $post_id);
+    }
 };

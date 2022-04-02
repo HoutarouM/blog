@@ -47,6 +47,8 @@ class Database
 
         for ($i = 1; $i <= count($args); $i++) {
             $stmt->bindValue($i, $args[$i - 1]);
+
+            echo $args[$i - 1] . "<br>";
         }
 
         $stmt->execute();

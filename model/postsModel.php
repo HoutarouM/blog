@@ -93,4 +93,13 @@ class PostsModel extends BasicModel
 
         return true;
     }
+
+    public function likePost($user_id, $post_id)
+    {
+        $add_discussion_query = "INSERT INTO `polubienia`(`id`, `id_uzytkownika`, `id_posta`) VALUES (null, ?, ?);";
+
+        $this->write($add_discussion_query, [$user_id, $post_id]);
+
+        return true;
+    }
 }

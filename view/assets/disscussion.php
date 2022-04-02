@@ -5,7 +5,6 @@
     <div class="discussions">
 
         <?php
-
         $posts_data = $this->getPostsData();
 
         if (!$posts_data) {
@@ -40,6 +39,11 @@
                     <div class="post-data">
                         <p>Author: <?= $this->getAuthorData($posts_data[$i]['id']) ?></p>
                         <p>Likes: <?= $this->getLikesData($posts_data[$i]['id']) ?></p>
+                        <form action="" method="post">
+                            <input type="hidden" name="user" value="<?= $this->getAutourId($_SESSION['login'])[0] ?>">
+                            <input type="hidden" name="post_id" value="<?= $posts_data[$i]['id'] ?>">
+                            <button type="submit" name="like">👍</button>
+                        </form>
                     </div>
                     <p><?= $posts_data[$i]['text'] ?></p>
                 </div>
@@ -48,45 +52,23 @@
 
         <?php endfor; ?>
 
-        <?php if (!array_key_exists('login', $_SESSION)) : ?>
-            <div class="login-pls">
-                <h3>Login or register, please</h3>
+        <?php
 
-                <div class="links">
-                    <a href="/php/forum_study/login">Login</a>
-                    <a href="/php/forum_study/register" class="reg">Register</a>
-                </div>
-            </div>
+        if (!empty($_POST['user']) && !empty($_POST['post_id']) && isset($_POST['like'])) {
+            $this->likePost($_POST['user'], $_POST['post_id'], $_POST['like']);
 
-        <?php else : ?>
-            <div class="add-comment">
-                <h3>Add Comment</h3>
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
 
-                <form action="" method="post">
-                    <input type="hidden" name="parent_post_id" value="<?= $parent_post_id ?>">
-                    <input type="hidden" name="category_id" value="<?= $category_id ?>">
-                    <input type="hidden" name="author_id" value="<?= $this->getAutourId($_SESSION['login'])[0] ?>">
+        // view comments textarea if logged in
+        // or login and register button if not
 
-                    <textarea name="text" cols="10" rows="5"></textarea>
-
-                    <input type="submit" value="Add comment">
-                </form>
-
-                <?php
-                if (
-                    !empty($_POST['parent_post_id'])
-                    && !empty($_POST['category_id'])
-                    && !empty($_POST['author_id'])
-                    && !empty($_POST['text'])
-                ) {
-                    $this->addComment($_POST['parent_post_id'], $_POST['category_id'], $_POST['author_id'], $_POST['text']);
-
-                    // refresh page after submit with no warnings
-                    echo "<meta http-equiv='refresh' content='0'>";
-                }
-                ?>
-            </div>
-        <?php endif; ?>
+        if (!array_key_exists('login', $_SESSION)) {
+            include_once './view/assets/add_coment.php';
+        } else {
+            include_once './view/assets/add_coment.php';
+        }
+        ?>
     </div>
 
 </div>
