@@ -26,7 +26,7 @@
         ) {
 
             if ($this->register($_POST['login'], $_POST['email'], $_POST['pass'], $_POST['r_pass'])) {
-                header('location: /php/forum_study/');
+                header('location: index.php');
             } else {
                 echo "Nick is already used.";
             }

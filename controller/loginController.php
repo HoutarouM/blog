@@ -19,7 +19,7 @@ class LoginController extends BasicController
         if ($res) {
             $_SESSION['login'] = $login;
 
-            header('location: /php/forum_study/');
+            header('location: index.php');
         } else {
             echo 'Zly login lub haslo';
         }
