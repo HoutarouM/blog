@@ -81,7 +81,7 @@
         // or login and register button if not
 
         if (!array_key_exists('login', $_SESSION)) {
-            include_once './view/assets/add_coment.php';
+            include_once './view/assets/login_pls.php';
         } else {
             include_once './view/assets/add_coment.php';
         }
