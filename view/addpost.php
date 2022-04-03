@@ -1,7 +1,6 @@
 <?php include_once './view/assets/header.php'; ?>
 
 <div class="main-content form">
-    <!-- TODO: add styles -->
 
     <h2>Add Discussion</h2>
 
@@ -38,10 +37,12 @@
     if (!empty($_POST['author_id']) && !empty($_POST['title']) && !empty($_POST['post_text'])) {
 
         // check is category is chosen
-        if (!$this->addDiscussion($_POST['category'], $_POST['author_id'], $_POST['title'], $_POST['post_text'])) {
-            echo 'Chose category';
-        } else {
+        if (!empty($_POST['category'])) {
+            $this->addDiscussion($_POST['category'], $_POST['author_id'], $_POST['title'], $_POST['post_text']);
+
             header('Location: index.php');
+        } else {
+            echo 'Chose category';
         }
     }
     ?>

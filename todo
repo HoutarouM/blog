@@ -1,8 +1,6 @@
 TODO:        
     - create a sort
     - filter forms by php
-    - basicController to class
-    - render and getModel methods to basicController
 
 DONE:
   Baza danych:

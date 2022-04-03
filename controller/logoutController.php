@@ -2,10 +2,8 @@
 
 namespace App\Controller;
 
-class LogoutController implements BasicController
+class LogoutController extends BasicController
 {
-    protected $model;
-
     public function index($url, $data = [])
     {
         $_SESSION['login'] = '';

@@ -2,9 +2,8 @@
 
 namespace App\Controller;
 
-class PostsController implements BasicController
+class PostsController extends BasicController
 {
-    protected $model;
     protected $data;
 
     public function index($url, $data = null)
@@ -22,37 +21,7 @@ class PostsController implements BasicController
         $this->render($url);
     }
 
-    private function render($url)
-    {
-        if (file_exists('./view/' . $url . '.php')) {
-            include_once './view/' . $url . '.php';
-        } else {
-            $data['error_mes'] = 'Nie znałeziono strony :(';
-
-            include_once './view/error.php';
-        }
-    }
-
-    public function getModel($url = 'posts')
-    {
-        if (file_exists('./model/' . $url . 'Model.php')) {
-            include './model/' . $url . 'Model.php';
-
-            $this->model = trim('App\Model\ ', ' ') . ucfirst($url) . 'Model';
-
-            $this->model = new $this->model();
-
-            return true;
-        } else {
-            $data['error_mes'] = 'Nie znałeziono strony :(';
-
-            include './view/error.php';
-
-            return false;
-        }
-    }
-
-    private function getPostsData()
+    protected function getPostsData()
     {
         $data = null;
 
@@ -69,7 +38,7 @@ class PostsController implements BasicController
         return $posts_data;
     }
 
-    private function getAutourId($login)
+    protected function getAutourId($login)
     {
         $author_id = $this->model->getAutourId($login);
 
@@ -80,7 +49,7 @@ class PostsController implements BasicController
         return $author_id[0];
     }
 
-    private function getAuthorData($post_id)
+    protected function getAuthorData($post_id)
     {
         $author_data = $this->model->getAuthorData($post_id);
 
@@ -91,7 +60,7 @@ class PostsController implements BasicController
         return $author_data[0][0];
     }
 
-    private function getLikesData($post_id)
+    protected function getLikesData($post_id)
     {
         $likes_data = $this->model->getLikesData($post_id);
 
@@ -102,12 +71,12 @@ class PostsController implements BasicController
         return $likes_data[0][0];
     }
 
-    private function getCategories()
+    protected function getCategories()
     {
         return $this->model->getCategories();
     }
 
-    private function addComment($parent_post_id, $category_id, $author_id, $text)
+    protected function addComment($parent_post_id, $category_id, $author_id, $text)
     {
         // if category is not chosen return false
         if ($category_id == 0) {
@@ -119,7 +88,7 @@ class PostsController implements BasicController
         return true;
     }
 
-    private function likePost($user_id, $post_id)
+    protected function likePost($user_id, $post_id)
     {
         $this->model->likePost($user_id, $post_id);
     }

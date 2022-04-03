@@ -2,52 +2,9 @@
 
 namespace App\Controller;
 
-class AddpostController implements BasicController
+class AddpostController extends BasicController
 {
-    protected $model;
-
-    public function index($url, $data = [])
-    {
-        $m = $this->getModel($url);
-
-        if (!$m) {
-            return;
-        }
-
-        $this->render($url);
-    }
-
-    private function render($url)
-    {
-        if (file_exists('./view/' . $url . '.php')) {
-            include_once './view/' . $url . '.php';
-        } else {
-            $data['error_mes'] = 'Nie znałeziono strony :(';
-
-            include_once './view/error.php';
-        }
-    }
-
-    public function getModel($url)
-    {
-        if (file_exists('./model/' . $url . 'Model.php')) {
-            include './model/' . $url . 'Model.php';
-
-            $this->model = trim('App\Model\ ', ' ') . ucfirst($url) . 'Model';
-
-            $this->model = new $this->model();
-
-            return true;
-        } else {
-            $data['error_mes'] = 'Nie znałeziono strony :(';
-
-            include './view/error.php';
-
-            return false;
-        }
-    }
-
-    private function getCategories()
+    protected function getCategories()
     {
         $categories = $this->model->getCategories();
 
@@ -58,7 +15,7 @@ class AddpostController implements BasicController
         return $categories;
     }
 
-    private function getAutourId($login)
+    protected function getAutourId($login)
     {
         $author_id = $this->model->getAutourId($login);
 
@@ -69,7 +26,7 @@ class AddpostController implements BasicController
         return $author_id[0];
     }
 
-    private function addDiscussion($category_id, $author_id, $title, $text)
+    protected function addDiscussion($category_id, $author_id, $title, $text)
     {
         // if category is not chosen return false
         if ($category_id == 0) {
