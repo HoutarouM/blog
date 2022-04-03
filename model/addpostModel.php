@@ -2,8 +2,6 @@
 
 namespace App\Model;
 
-require './model/basicModel.php';
-
 class AddPostModel extends BasicModel
 {
     public function addDiscussion($category_id, $author_id, $title, $text)

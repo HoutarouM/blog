@@ -2,8 +2,6 @@
 
 namespace App\Model;
 
-require './model/basicModel.php';
-
 class PostsModel extends BasicModel
 {
     public function getPostsData($data)

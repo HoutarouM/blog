@@ -2,7 +2,7 @@
 
 namespace App;
 
-require './controller/basicController.php';
+require_once './controller/basicController.php';
 
 
 class Router

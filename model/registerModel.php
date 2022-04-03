@@ -2,8 +2,6 @@
 
 namespace App\Model;
 
-require './model/basicModel.php';
-
 class RegisterModel extends BasicModel
 {
     public function register($login, $email, $pass)

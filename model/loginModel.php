@@ -2,8 +2,6 @@
 
 namespace App\Model;
 
-require './model/basicModel.php';
-
 class LoginModel extends BasicModel
 {
     public function login($login, $pass)
