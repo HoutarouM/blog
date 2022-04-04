@@ -18,6 +18,11 @@
         && !empty($_POST['author_id'])
         && !empty($_POST['text'])
     ) {
+        filter_var($_POST['parent_post_id'], FILTER_SANITIZE_NUMBER_INT);
+        filter_var($_POST['category_id'], FILTER_SANITIZE_NUMBER_INT);
+        filter_var($_POST['author_id'], FILTER_SANITIZE_NUMBER_INT);
+        filter_var($_POST['text'], FILTER_SANITIZE_SPECIAL_CHARS);
+
         $this->addComment($_POST['parent_post_id'], $_POST['category_id'], $_POST['author_id'], $_POST['text']);
 
         // refresh page after submit with no warnings

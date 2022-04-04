@@ -15,6 +15,8 @@
         // execute controller login method
 
         if (!empty($_POST['login']) && !empty($_POST['pass'])) {
+            filter_var($_POST['login'], FILTER_SANITIZE_SPECIAL_CHARS);
+
             $this->login($_POST['login'], $_POST['pass']);
         }
         ?>

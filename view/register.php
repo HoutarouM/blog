@@ -24,6 +24,9 @@
             !empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['pass'])
             && !empty($_POST['r_pass'])
         ) {
+            filter_var($_POST['login'], FILTER_SANITIZE_SPECIAL_CHARS);
+            filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+
 
             if ($this->register($_POST['login'], $_POST['email'], $_POST['pass'], $_POST['r_pass'])) {
                 header('location: index.php');
