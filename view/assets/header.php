@@ -10,8 +10,7 @@
 
 <body>
     <header>
-        <!-- TODO: change font-family for logo -->
-        <a href="/php/forum_study/">
+        <a href="index.php">
             <div class="site-logo">
                 <h1>『My Forum』</h1>
             </div>

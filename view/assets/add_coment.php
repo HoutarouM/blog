@@ -6,7 +6,7 @@
         <input type="hidden" name="category_id" value="<?= $category_id ?>">
         <input type="hidden" name="author_id" value="<?= $this->getAutourId($_SESSION['login'])[0] ?>">
 
-        <textarea name="text" cols="10" rows="5"></textarea>
+        <textarea name="text" cols="10" rows="5" placeholder="Post text..." required></textarea>
 
         <input type="submit" value="Add comment">
     </form>

@@ -52,8 +52,10 @@
 
         let post_text = document.getElementById('post_text');
 
-        post_text.oninvalid = (e) => {
-            e.target.setCustomValidity(post_text.title);
+        post_text.onsubmit = () => {
+            post_text.oninvalid = (e) => {
+                e.target.setCustomValidity(post_text.title);
+            }
         }
     </script>
 </div>

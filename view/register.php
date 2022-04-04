@@ -44,20 +44,28 @@
             let pass = document.getElementById('pass');
             let r_pass = document.getElementById('pass');
 
-            login.oninvalid = (e) => {
-                e.target.setCustomValidity(login.title);
+            login.onsubmit = () => {
+                login.oninvalid = (e) => {
+                    e.target.setCustomValidity(login.title);
+                }
             }
 
-            email.oninvalid = (e) => {
-                e.target.setCustomValidity(email.title);
+            email.onsubmit = () => {
+                email.oninvalid = (e) => {
+                    e.target.setCustomValidity(email.title);
+                }
             }
 
-            pass.oninvalid = (e) => {
-                e.target.setCustomValidity(pass.title);
+            pass.onsubmit = () => {
+                pass.oninvalid = (e) => {
+                    e.target.setCustomValidity(pass.title);
+                }
             }
 
-            r_pass.oninvalid = (e) => {
-                e.target.setCustomValidity(r_pass.title);
+            r_pass.onsubmit = () => {
+                r_pass.oninvalid = (e) => {
+                    e.target.setCustomValidity(r_pass.title);
+                }
             }
         </script>
     </div>
