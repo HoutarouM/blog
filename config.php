@@ -1,5 +1,8 @@
 <?php
 
+// Base URL
+define('BASE_URL', '/php/forum_study');
+
 // Website title
 define('WEBSITE_TITLE', 'My forum');
 
