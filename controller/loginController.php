@@ -21,7 +21,7 @@ class LoginController extends BasicController
 
             header('location: index.php');
         } else {
-            echo 'Zly login lub haslo';
+            echo 'Wrong login or password.';
         }
     }
 };

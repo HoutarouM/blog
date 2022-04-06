@@ -8,7 +8,7 @@ require_once './controller/basicController.php';
 class Router
 {
     private $controller;
-    private $controllerMethodParam;
+    private $controllerMethodParams;
 
     public function __construct()
     {
@@ -65,8 +65,8 @@ class Router
          * if have sava in controllerMethodParam var
          */
 
-        if (!empty($_GET['post'])) {
-            $this->controllerMethodParam =  $_GET['post'];
+        if (!empty($_GET['url'])) {
+            $this->controllerMethodParams =  $_GET['url'];
         }
     }
 
@@ -78,8 +78,8 @@ class Router
          * if exists execute method and write method to controllerMethod var
          */
 
-        if (!empty($this->controllerMethodParam)) {
-            $this->controllerMethod = call_user_func(array($this->controller, 'index'), $url[0], $this->controllerMethodParam);
+        if (!empty($this->controllerMethodParams)) {
+            $this->controllerMethod = call_user_func(array($this->controller, 'index'), $url[0], $this->controllerMethodParams);
         } else {
             $this->controllerMethod = call_user_func(array($this->controller, 'index'), $url[0]);
         }

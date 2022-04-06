@@ -5,7 +5,7 @@
     <div class="discussions">
 
         <?php
-        $posts_data = $this->getPostsData();
+        $posts_data = $this->getPostData();
 
         if ($posts_data) {
             for ($i = 0; $i < count($posts_data); $i++) : ?>

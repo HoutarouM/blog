@@ -7,6 +7,8 @@ namespace App\Controller;
  */
 class BasicController
 {
+    protected $data;
+
     public function index($url, $data = null)
     {
         if ($data != null) {

@@ -1,6 +1,9 @@
 TODO:        
     - create a sort
     - delete post
+    - add comments
+    - fix links
+    - post and posts controllers refactoring
 
 DONE:
   Baza danych:
