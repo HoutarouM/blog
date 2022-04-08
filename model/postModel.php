@@ -71,4 +71,15 @@ class PostModel extends BasicModel
 
         return true;
     }
+
+    public function delPost($post_id)
+    {
+        // delete post likes
+        $del_post_likes_query = "DELETE FROM `polubienia` WHERE `id_posta` = ?";
+        $this->write($del_post_likes_query, [$post_id]);
+
+        // delete post
+        $del_post_query = "DELETE FROM `posty` WHERE `posty`.`id` = ?";
+        $this->write($del_post_query, [$post_id]);
+    }
 }

@@ -35,4 +35,9 @@ class PostController extends BasicController
     {
         $this->model->likePost($user_id, $post_id);
     }
+
+    protected function delPost($post_id)
+    {
+        $this->model->delPost($post_id);
+    }
 };
