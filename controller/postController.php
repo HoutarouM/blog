@@ -4,23 +4,6 @@ namespace App\Controller;
 
 class PostController extends BasicController
 {
-    protected function getPostData()
-    {
-        $data = null;
-
-        if (!empty($this->data)) {
-            $data = $this->data;
-        }
-
-        $posts_data = $this->model->getPostsData($data);
-
-        if (empty($posts_data)) {
-            return false;
-        }
-
-        return $posts_data;
-    }
-
     protected function getAutourId($login)
     {
         $author_id = $this->model->getAutourId($login);
@@ -32,39 +15,16 @@ class PostController extends BasicController
         return $author_id[0];
     }
 
-    protected function getAuthorData($post_id)
-    {
-        $author_data = $this->model->getAuthorData($post_id);
-
-        if (empty($author_data)) {
-            return false;
-        }
-
-        return $author_data[0][0];
-    }
-
-    protected function getLikesData($post_id)
-    {
-        $likes_data = $this->model->getLikesData($post_id);
-
-        if (empty($likes_data)) {
-            return false;
-        }
-
-        return $likes_data[0][0];
-    }
-
-    protected function getCategories()
-    {
-        return $this->model->getCategories();
-    }
-
     protected function addComment($parent_post_id, $category_id, $author_id, $text)
     {
+        // echo "hello I'm work";
+
         // if category is not chosen return false
         if ($category_id == 0) {
             return false;
         }
+
+        // echo "hello I'm work";
 
         $res = $this->model->addComment($parent_post_id, $category_id, $author_id, $text);
 

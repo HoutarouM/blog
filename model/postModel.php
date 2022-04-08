@@ -6,9 +6,9 @@ class PostModel extends BasicModel
 {
     public function getPostsData($data)
     {
-        $get_post_data_query = "SELECT * FROM `posty` WHERE  `id_postu_nadzendnego` = ?";
+        $get_post_data_query = "SELECT * FROM `posty` WHERE id = ? OR `id_postu_nadzendnego` = ?";
 
-        $stmt = $this->read($get_post_data_query, [$data[1]]);
+        $stmt = $this->read($get_post_data_query, [$data[1], $data[1]]);
 
         $data = $stmt->fetchAll();
 
@@ -49,6 +49,13 @@ class PostModel extends BasicModel
 
     public function addComment($parent_post_id, $category_id, $author_id, $text)
     {
+        echo "hello I'm work <br>";
+
+        echo $parent_post_id . "<br>";
+        echo $category_id . "<br>";
+        echo $author_id . "<br>";
+        echo $text . "<br>";
+
         $add_comment_query = "INSERT INTO `posty`(`id`, `id_postu_nadzendnego`, `id_kategorii`, `id_autora`, `tytul`, `text`) VALUES (NULL, ?, ?, ?, NULL, ?);";
 
         $this->write($add_comment_query, [$parent_post_id, $category_id, $author_id, $text]);

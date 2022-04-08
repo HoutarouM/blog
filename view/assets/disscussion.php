@@ -5,9 +5,10 @@
     <div class="discussions">
 
         <?php
-        $posts_data = $this->getPostData();
+        // get posts data
+        $posts_data = $this->getPostsData();
 
-        if ($posts_data) {
+        if (!empty($posts_data)) {
             for ($i = 0; $i < count($posts_data); $i++) : ?>
 
                 <?php if ($i == 0) : ?>
@@ -34,6 +35,8 @@
                     </div>
 
                     <?php
+
+
                     // category id for new comments
                     $category_id = $posts_data[$i]['id_kategorii'];
 
@@ -84,7 +87,7 @@
         if (!array_key_exists('login', $_SESSION)) {
             include_once './view/assets/login_pls.php';
         } else {
-            include_once './view/assets/add_coment.php';
+            include_once './view/assets/add_comment.php';
         }
         ?>
     </div>

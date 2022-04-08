@@ -1,3 +1,5 @@
+<!-- TODO: fix input values -->
+
 <div class="add-comment">
     <h3>Add Comment</h3>
 
