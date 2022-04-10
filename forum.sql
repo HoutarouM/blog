@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 15 Mar 2022, 18:55
+-- Czas generowania: 10 Kwi 2022, 11:53
 -- Wersja serwera: 10.4.22-MariaDB
 -- Wersja PHP: 8.1.2
 
@@ -32,6 +32,13 @@ CREATE TABLE `kategorie` (
   `kategoria` varchar(20) COLLATE utf8mb4_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
+--
+-- Zrzut danych tabeli `kategorie`
+--
+
+INSERT INTO `kategorie` (`id`, `kategoria`) VALUES
+(1, 'kategoria');
+
 -- --------------------------------------------------------
 
 --
@@ -44,6 +51,14 @@ CREATE TABLE `polubienia` (
   `id_posta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
+--
+-- Zrzut danych tabeli `polubienia`
+--
+
+INSERT INTO `polubienia` (`id`, `id_uzytkownika`, `id_posta`) VALUES
+(4, 2, 4),
+(5, 2, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -55,9 +70,17 @@ CREATE TABLE `posty` (
   `id_postu_nadzendnego` int(11) DEFAULT NULL,
   `id_kategorii` int(11) NOT NULL,
   `id_autora` int(11) NOT NULL,
-  `tytul` varchar(25) COLLATE utf8mb4_polish_ci NOT NULL,
+  `tytul` varchar(25) COLLATE utf8mb4_polish_ci DEFAULT NULL,
   `text` text COLLATE utf8mb4_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Zrzut danych tabeli `posty`
+--
+
+INSERT INTO `posty` (`id`, `id_postu_nadzendnego`, `id_kategorii`, `id_autora`, `tytul`, `text`) VALUES
+(3, NULL, 1, 2, 'hello forum', 'hello'),
+(4, NULL, 1, 2, 'test secon post', 'hello');
 
 -- --------------------------------------------------------
 
@@ -71,6 +94,17 @@ CREATE TABLE `users` (
   `password` text COLLATE utf8mb4_polish_ci NOT NULL,
   `nick` varchar(15) COLLATE utf8mb4_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Zrzut danych tabeli `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `nick`) VALUES
+(1, 'aaa', 'd6f644b19812e97b5d871658d6d3400ecd4787faeb9b8990c1e7608288664be77257104a58d033bcf1a0e0945ff06468ebe53e2dff36e248424c7273117dac09', 'aaa'),
+(2, 'hello@mail.com', 'a4db351d57adf4b71105ef2b13138ea50d539c93a83b471974a7a7c1f8b132cd267e11266529eaaf08f05e516dbebf03133688826cb538eebc626bb06ad1ebd8', 'hello'),
+(3, 'hello@mail.com', 'a4db351d57adf4b71105ef2b13138ea50d539c93a83b471974a7a7c1f8b132cd267e11266529eaaf08f05e516dbebf03133688826cb538eebc626bb06ad1ebd8', 'dadasdas'),
+(4, 'hello@mail.com', 'a4db351d57adf4b71105ef2b13138ea50d539c93a83b471974a7a7c1f8b132cd267e11266529eaaf08f05e516dbebf03133688826cb538eebc626bb06ad1ebd8', 'test'),
+(5, 'admin@mail.com', 'a4db351d57adf4b71105ef2b13138ea50d539c93a83b471974a7a7c1f8b132cd267e11266529eaaf08f05e516dbebf03133688826cb538eebc626bb06ad1ebd8', 'admin');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -113,25 +147,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT dla tabeli `kategorie`
 --
 ALTER TABLE `kategorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `polubienia`
 --
 ALTER TABLE `polubienia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT dla tabeli `posty`
 --
 ALTER TABLE `posty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ograniczenia dla zrzutów tabel
