@@ -67,6 +67,8 @@ class Router
 
         if (!empty($_GET['url'])) {
             $this->controllerMethodParams =  $_GET['url'];
+
+            unset($this->controllerMethodParams[0]);
         }
     }
 

@@ -6,7 +6,7 @@ class PostsModel extends BasicModel
 {
     public function getPostsData($data)
     {
-        $get_post_data_query = "SELECT * FROM `posty` WHERE isNull(`id_postu_nadzendnego`);";
+        $get_post_data_query = $this->getPostDataQuery($data);
 
         $stmt = $this->read($get_post_data_query, []);
 
@@ -17,6 +17,36 @@ class PostsModel extends BasicModel
         } else {
             return false;
         }
+    }
+
+    private function getPostDataQuery($data)
+    {
+        if (!empty($data[1])) {
+            // if sort params exist
+            switch ($data[1]) {
+                case 'time':
+                    // sort by time created by id
+                    $get_post_data_query = "SELECT * FROM `posty` WHERE isNull(`id_postu_nadzendnego`) ORDER BY `id` $data[2]";
+
+                    break;
+                case 'likes':
+                    // sort by likes count
+                    $get_post_data_query = "SELECT * FROM `posty` 
+                        LEFT JOIN polubienia ON polubienia.id_posta = posty.id
+                        WHERE isNull(posty.`id_postu_nadzendnego`) 
+                        GROUP BY posty.id 
+                        ORDER BY (COUNT(polubienia.id_posta)) $data[2]";
+
+                    break;
+            }
+        } else {
+            // sort params not exist
+            // default order by params 
+            // (no sort)
+            $get_post_data_query = "SELECT * FROM `posty` WHERE isNull(`id_postu_nadzendnego`) ORDER BY `id` ASC";
+        }
+
+        return $get_post_data_query;
     }
 
     public function getAuthorData($post_id)

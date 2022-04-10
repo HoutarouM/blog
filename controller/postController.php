@@ -17,14 +17,9 @@ class PostController extends BasicController
 
     protected function addComment($parent_post_id, $category_id, $author_id, $text)
     {
-        // echo "hello I'm work";
-
-        // if category is not chosen return false
         if ($category_id == 0) {
             return false;
         }
-
-        // echo "hello I'm work";
 
         $res = $this->model->addComment($parent_post_id, $category_id, $author_id, $text);
 

@@ -26,7 +26,8 @@
             echo "No posts";
         }
         ?>
-
     </div>
+
+    <?php include_once './view/assets/nav.php'; ?>
 
 </div>
