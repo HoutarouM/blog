@@ -1,15 +1,15 @@
 <div class="pagination">
     <ul>
-        <li>
-            <a href="#" class="active">1</a>
-        </li>
+        <?php
+        $pages_count = ceil($this->getPageCount() / 5);
 
-        <li>
-            <a href="#">2</a>
-        </li>
+        for ($i = 1; $i <= $pages_count; $i++) : ?>
 
-        <li>
-            <a href="#">3</a>
-        </li>
+            <li>
+                <a href="<?= BASE_URL ?>/posts/<?= $i ?>" <?= ($this->page == $i) ? 'class="active"' : ''  ?>><?= $i ?></a>
+            </li>
+
+        <?php endfor; ?>
+
     </ul>
 </div>

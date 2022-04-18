@@ -8,12 +8,17 @@ namespace App\Controller;
 class BasicController
 {
     protected $data;
+    protected $page;
 
     // basic controller methods
     public function index($url, $data = null)
     {
         if ($data != null) {
             $this->data = $data;
+
+            $this->page = $data[1];
+        } else {
+            $this->page = 1;
         }
 
         $m = $this->getModel($url);
@@ -58,19 +63,11 @@ class BasicController
     // basic posts methods
     protected function getPostsData()
     {
-        $data = null;
-
         if (!empty($this->data)) {
-            $data = $this->data;
+            return $this->model->getPostsData($this->data, $this->page);
+        } else {
+            return $this->model->getPostsData($this->page, null);
         }
-
-        $posts_data = $this->model->getPostsData($data);
-
-        if (empty($posts_data)) {
-            return false;
-        }
-
-        return $posts_data;
     }
 
     protected function getAuthorData($post_id)
@@ -98,5 +95,20 @@ class BasicController
     protected function getCategories()
     {
         return $this->model->getCategories();
+    }
+
+    public function getPageCount()
+    {
+        if (!empty($this->data)) {
+            if (empty($this->data[2])) {
+                $this->data[2] = 'ASC';
+            }
+
+            return $this->model->getPageCount($this->data)[0][0];
+        } else {
+            $this->data[2] = 'ASC';
+
+            return $this->model->getPageCount($this->data)[0][0];
+        }
     }
 }
