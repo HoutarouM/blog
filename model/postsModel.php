@@ -4,9 +4,11 @@ namespace App\Model;
 
 class PostsModel extends BasicModel
 {
-    public function getPostsData($page, $data)
+    public $page;
+
+    public function getPostsData($data)
     {
-        $get_post_data_query = $this->getPostDataQuery($data, $page);
+        $get_post_data_query = $this->getPostDataQuery($data);
 
         $stmt = $this->read($get_post_data_query, []);
 
@@ -19,30 +21,46 @@ class PostsModel extends BasicModel
         }
     }
 
-    private function getPostDataQuery($data, $page)
+    private function getPostDataQuery($data)
     {
-        if (is_array($page)) {
-            $page = $page[1];
+        if (!empty($data[3])) {
+            $page = $data[3];
+        } else if (!empty($data[1])) {
+            $page = $data[1];
+        } else {
+            $page = 1;
         }
+
+        $limit_start = ($page - 1) * 5;
 
         if (!empty($data[1])) {
             // if sort params exist
             switch ($data[1]) {
                 case 'time':
                     $get_post_data_query = "SELECT * FROM `posty` 
-                                                WHERE `id` BETWEEN ($page - 1) * 5 AND $page * 5 
-                                                AND isNull(`id_postu_nadzendnego`) 
-                                                ORDER BY `id` $data[2]";
+                                                WHERE isNull(`id_postu_nadzendnego`)
+                                                ORDER BY `id` $data[2]
+                                                LIMIT $limit_start, 5;";
 
                     break;
                 case 'likes':
                     // sort by likes count
                     $get_post_data_query = "SELECT * FROM `posty` 
-                        LEFT JOIN polubienia ON polubienia.id_posta = posty.id
-                        WHERE `posty`.`id` BETWEEN ($page - 1) * 5 AND $page * 5
-                        AND isNull(posty.`id_postu_nadzendnego`) 
-                        GROUP BY posty.id 
-                        ORDER BY (COUNT(polubienia.id_posta)) $data[2]";
+                                                LEFT JOIN `polubienia` ON `polubienia`.`id_posta` = `posty`.`id`
+                                                WHERE isNull(`posty`.`id_postu_nadzendnego`) 
+                                                GROUP BY `posty`.`id` 
+                                                ORDER BY (COUNT(`polubienia`.`id_posta`)) $data[2]
+                                                LIMIT $limit_start, 5;";
+
+                    break;
+                default:
+                    // sort params not exist
+                    // default order by params 
+                    // (no sort)
+                    $get_post_data_query = "SELECT * FROM `posty` 
+                                                WHERE isNull(`id_postu_nadzendnego`) 
+                                                ORDER BY `id` ASC
+                                                LIMIT $limit_start, 5;";
 
                     break;
             }
@@ -51,10 +69,12 @@ class PostsModel extends BasicModel
             // default order by params 
             // (no sort)
             $get_post_data_query = "SELECT * FROM `posty` 
-                                        WHERE `id` BETWEEN ($page - 1) * 5 AND $page * 5                                     
-                                        AND isNull(`id_postu_nadzendnego`) 
-                                        ORDER BY `id` ASC";
+                                        WHERE isNull(`id_postu_nadzendnego`) 
+                                        ORDER BY `id` ASC
+                                        LIMIT $limit_start, 5;";
         }
+
+        $this->page = $page;
 
         return $get_post_data_query;
     }
@@ -135,5 +155,10 @@ class PostsModel extends BasicModel
         } else {
             return false;
         }
+    }
+
+    public function getPage()
+    {
+        return $this->page;
     }
 }

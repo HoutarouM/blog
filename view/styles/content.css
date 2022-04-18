@@ -9,6 +9,7 @@ main .main-content {
   margin: 0 auto;
   max-width: 60%;
   padding: 1%;
+  min-height: 850px;
 }
 
 main .main-content .discussions-and-nav-wrapper {

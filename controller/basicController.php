@@ -8,15 +8,12 @@ namespace App\Controller;
 class BasicController
 {
     protected $data;
-    protected $page;
 
     // basic controller methods
     public function index($url, $data = null)
     {
         if ($data != null) {
             $this->data = $data;
-
-            $this->page = $data[1];
         } else {
             $this->page = 1;
         }
@@ -64,9 +61,9 @@ class BasicController
     protected function getPostsData()
     {
         if (!empty($this->data)) {
-            return $this->model->getPostsData($this->data, $this->page);
+            return $this->model->getPostsData($this->data);
         } else {
-            return $this->model->getPostsData($this->page, null);
+            return $this->model->getPostsData(null);
         }
     }
 
@@ -110,5 +107,10 @@ class BasicController
 
             return $this->model->getPageCount($this->data)[0][0];
         }
+    }
+
+    protected function getPage()
+    {
+        return $this->model->getPage();
     }
 }

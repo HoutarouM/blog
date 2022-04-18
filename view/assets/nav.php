@@ -22,7 +22,7 @@
         $sortTimeCreated = $_POST['sortTimeCreated'];
 
         if ($sortCategory != 0 && $sortTimeCreated != 0) {
-            $value = 'php/forum_study/posts/' . $sortCategory . '/' . $sortTimeCreated;
+            $value = 'php/forum_study/posts/' . $sortCategory . '/' . $sortTimeCreated . '/1';
 
             header("Location: /$value");
         } else {
