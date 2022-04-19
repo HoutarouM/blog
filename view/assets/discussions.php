@@ -11,12 +11,12 @@
 
                 <div class="discussion">
 
-                    <a href="<?= BASE_URL ?>/post/<?= $post_data['id'] ?>">
+                    <a href="<?= BASE_URL ?>/post/<?= $post_data['id_posta'] ?>/1">
                         <h2><?= $post_data['tytul'] ?></h2>
                     </a>
                     <div class="post-data">
-                        <p>Author: <?= $this->getAuthorData($post_data['id']) ?></p>
-                        <p>Likes: <?= $this->getLikesData($post_data['id']) ?></p>
+                        <p>Author: <?= $this->getAuthorData($post_data['id_posta']) ?></p>
+                        <p>Likes: <?= $this->getLikesData($post_data['id_posta']) ?></p>
                     </div>
                     <p><?= substr($post_data['text'], 0, 25) . '...' ?></p>
                 </div>
