@@ -1,9 +1,10 @@
 /* imports styles for components */
 
-@import url("style.css");
-@import url("header.css");
-@import url("content.css");
-@import url("posts.css");
-@import url("form.css");
-@import url("pagination.css");
-@import url("footer.css");
+@import url('style.css');
+@import url('header.css');
+@import url('content.css');
+@import url('posts.css');
+@import url('form.css');
+@import url('textArea.css');
+@import url('pagination.css');
+@import url('footer.css');

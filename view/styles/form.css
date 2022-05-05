@@ -3,7 +3,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  width: 20%;
+  width: 45%;
 }
 
 .form h2,
@@ -17,9 +17,9 @@ form {
   padding: 1%;
 }
 
-form input[type="text"],
-input[type="password"],
-input[type="email"],
+form input[type='text'],
+input[type='password'],
+input[type='email'],
 textarea,
 select {
   margin: 1%;
@@ -29,7 +29,7 @@ select {
   resize: vertical;
 }
 
-form input[type="submit"] {
+form input[type='submit'] {
   text-align: center;
   background-color: #56cfe1;
   color: white;
@@ -40,7 +40,7 @@ form input[type="submit"] {
   align-self: flex-end;
 }
 
-form input[type="submit"]:hover,
-input[type="submit"]:active {
+form input[type='submit']:hover,
+input[type='submit']:active {
   background-color: #64dfdf;
 }

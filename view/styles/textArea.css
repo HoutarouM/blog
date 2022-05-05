@@ -1,0 +1,43 @@
+.text-editor {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-editor .text-editor-header {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.text-editor .btn {
+  padding: 10px;
+  margin: 2px;
+  background-color: #64dfdf;
+  border: none;
+  color: white;
+}
+
+.text-editor .content {
+  border: 1px solid black;
+  width: 700px;
+  height: 700px;
+}
+
+/* hide the input */
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+/* label style */
+.inputfile + label {
+  padding: 10px;
+  margin: 5px;
+  background-color: #64dfdf;
+  border: none;
+  color: white;
+  display: inline-block;
+}
