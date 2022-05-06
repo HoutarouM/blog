@@ -3,8 +3,6 @@
         <?php
         $pages_count = ceil($this->getPageCount() / 5);
 
-        // print_r($_GET['url']);
-
         if (count($_GET['url']) == 1) {
             $url = BASE_URL . '/posts/';
         } else if (count($_GET['url']) == 3) {

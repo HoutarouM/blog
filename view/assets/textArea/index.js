@@ -164,16 +164,17 @@ buttons.forEach((element) => {
 })
 
 // img
+if (img !== null) {
+  img.onchange = () => {
+    // object like list or image
+    let src = img.value
 
-img.onchange = () => {
-  // object like list or image
-  let src = img.value
+    // remove fakepath
+    src = src.replace('C:\\fakepath\\', '')
 
-  // remove fakepath
-  src = src.replace('C:\\fakepath\\', '')
-
-  // add img
-  textArea.setRangeText(`<img src="${src}">`)
+    // add img
+    textArea.setRangeText(`<img src="${src}">`)
+  }
 }
 
 // select
@@ -181,29 +182,31 @@ img.onchange = () => {
 // save prev font size for change if span exist
 let prevFontSize
 
-fontSizeSelect.onchange = () => {
-  // get selected text
-  let selection = getSelectedText()
+if (fontSizeSelect !== null) {
+  fontSizeSelect.onchange = () => {
+    // get selected text
+    let selection = getSelectedText()
 
-  // get html data- attr value
-  let fontSize = fontSizeSelect.value
+    // get html data- attr value
+    let fontSize = fontSizeSelect.value
 
-  // if span exist change font-size
-  // else create span
-  if (prevFontSize) {
-    // change font-size value
-    selection = selection.replace(prevFontSize, fontSize)
+    // if span exist change font-size
+    // else create span
+    if (prevFontSize) {
+      // change font-size value
+      selection = selection.replace(prevFontSize, fontSize)
 
-    // change textarea value
-    textArea.setRangeText(selection)
-  } else {
-    // add style property
-    fontSize = 'font-size: ' + fontSize
+      // change textarea value
+      textArea.setRangeText(selection)
+    } else {
+      // add style property
+      fontSize = 'font-size: ' + fontSize
 
-    // add span with style
-    addStyle(fontSize, selection)
+      // add span with style
+      addStyle(fontSize, selection)
+    }
+
+    // save prev font size
+    prevFontSize = fontSize
   }
-
-  // save prev font size
-  prevFontSize = fontSize
 }

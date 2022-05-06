@@ -17,6 +17,14 @@
                 <!-- Discussion topic -->
                 <?php if ($i == 0) : ?>
                     <h2><?= $posts_data[$i]['tytul'] ?></h2>
+
+                    <?php
+                    // category id for new comments
+                    $category_id = $posts_data[$i]['id_kategorii'];
+
+                    // parent post id for new comments
+                    $parent_post_id = $posts_data[$i]['id_posta'];
+                    ?>
                 <?php endif; ?>
 
                 <div class="discussion">
@@ -48,15 +56,6 @@
                     </div>
                     <p><?= $posts_data[$i]['text'] ?></p>
                 </div>
-
-                <?php
-                // category id for new comments
-                $category_id = $posts_data[$i]['id_kategorii'];
-
-                // parent post id for new comments
-                $parent_post_id = $posts_data[$i]['id_posta'];
-                ?>
-
             <?php endfor; ?>
 
         <?php

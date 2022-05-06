@@ -101,9 +101,11 @@
 
         let post_text = document.getElementById('post_text');
 
-        post_text.onsubmit = () => {
-            post_text.oninvalid = (e) => {
-                e.target.setCustomValidity(post_text.title);
+        if (post_text !== null) {
+            post_text.onsubmit = () => {
+                post_text.oninvalid = (e) => {
+                    e.target.setCustomValidity(post_text.title);
+                }
             }
         }
     </script>

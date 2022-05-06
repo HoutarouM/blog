@@ -8,8 +8,6 @@ class PostModel extends BasicModel
 
     public function getPostsData($data)
     {
-        print_r($data);
-
         if (!empty($data[2])) {
             $page = $data[2];
         } else {
@@ -63,8 +61,6 @@ class PostModel extends BasicModel
 
     public function addComment($parent_post_id, $category_id, $author_id, $text)
     {
-        echo "hello I'm work <br>";
-
         echo $parent_post_id . "<br>";
         echo $category_id . "<br>";
         echo $author_id . "<br>";
