@@ -18,7 +18,7 @@
                         <p>Author: <?= $this->getAuthorData($post_data['id_posta']) ?></p>
                         <p>Likes: <?= $this->getLikesData($post_data['id_posta']) ?></p>
                     </div>
-                    <p><?= substr($post_data['text'], 0, 25) . '...' ?></p>
+                    <p><?= substr(strip_tags($post_data['text']), 0, 25) . '...' ?></p>
                 </div>
 
         <?php endforeach;
