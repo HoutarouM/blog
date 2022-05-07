@@ -1,4 +1,4 @@
-<?php include_once './view/assets/header.php'; ?>
+<?php include_once '../view/assets/header.php'; ?>
 
 <div class="main-content form">
     <div class="login-form">
@@ -24,4 +24,4 @@
 
 </div>
 
-<?php include_once './view/assets/footer.php'; ?>
+<?php include_once '../view/assets/footer.php'; ?>

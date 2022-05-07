@@ -29,19 +29,19 @@ class BasicController
 
     public function render($url)
     {
-        if (file_exists('./view/' . $url . '.php')) {
-            include_once './view/' . $url . '.php';
+        if (file_exists('../view/' . $url . '.php')) {
+            include_once '../view/' . $url . '.php';
         } else {
             $data['error_mes'] = 'Nie znałeziono strony :(';
 
-            include_once './view/error.php';
+            include_once '../view/error.php';
         }
     }
 
     public function getModel($url = 'posts')
     {
-        if (file_exists('./model/' . $url . 'Model.php')) {
-            include './model/' . $url . 'Model.php';
+        if (file_exists('../model/' . $url . 'Model.php')) {
+            include '../model/' . $url . 'Model.php';
 
             $this->model = trim('App\Model\ ', ' ') . ucfirst($url) . 'Model';
 
@@ -51,7 +51,7 @@ class BasicController
         } else {
             $data['error_mes'] = 'Nie znałeziono strony :(';
 
-            include './view/error.php';
+            include '../view/error.php';
 
             return false;
         }

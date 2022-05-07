@@ -2,7 +2,7 @@
 
 namespace App;
 
-require_once './controller/basicController.php';
+require_once '../controller/basicController.php';
 
 
 class Router
@@ -46,8 +46,8 @@ class Router
          * if exists require controller file and create controller
          * and unset $url[0] variable
          */
-        if (file_exists('./controller/' . $url[0] . 'Controller.php')) {
-            require_once './controller/' . $url[0] . 'Controller.php';
+        if (file_exists('../controller/' . $url[0] . 'Controller.php')) {
+            require_once '../controller/' . $url[0] . 'Controller.php';
 
             $this->controller = trim('App\Controller\ ', ' ') . ucfirst($url[0]) . 'Controller';
 
@@ -55,7 +55,7 @@ class Router
 
             unset($url[0]);
         } else {
-            include_once './view/error.php';
+            include_once '../view/error.php';
         }
     }
 

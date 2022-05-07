@@ -10,6 +10,6 @@ class LogoutController extends BasicController
 
         session_destroy();
 
-        header('Location: index.php');
+        header('Location: ' . BASE_URL);
     }
 };

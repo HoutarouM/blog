@@ -1,4 +1,4 @@
-<?php include_once './view/assets/header.php'; ?>
+<?php include_once '../view/assets/header.php'; ?>
 
 <div class="main-content form">
     <h2>Register</h2>
@@ -29,7 +29,7 @@
 
 
             if ($this->register($_POST['login'], $_POST['email'], $_POST['pass'], $_POST['r_pass'])) {
-                header('location: index.php');
+                header('location: ' . BASE_URL);
             } else {
                 echo "Nick is already used.";
             }
@@ -72,4 +72,4 @@
 
 </div>
 
-<?php include_once './view/assets/footer.php'; ?>
+<?php include_once '../view/assets/footer.php'; ?>

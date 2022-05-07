@@ -28,8 +28,8 @@
         ?>
     </div>
 
-    <?php include_once './view/assets/nav.php'; ?>
+    <?php include_once '../view/assets/nav.php'; ?>
 
 </div>
 
-<?php include_once './view/assets/pagination.php'; ?>
+<?php include_once '../view/assets/pagination.php'; ?>

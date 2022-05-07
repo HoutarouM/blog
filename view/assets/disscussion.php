@@ -77,16 +77,16 @@
             if (count($posts_data) > 1) {
                 echo "<meta http-equiv='refresh' content='0'>";
             } else {
-                header("Location: index.php");
+                header("Location: " . BASE_URL);
             }
         }
 
         // view comments textarea if logged in
         // or login and register button if not
         if (!array_key_exists('login', $_SESSION)) {
-            include_once './view/assets/login_pls.php';
+            include_once '../view/assets/login_pls.php';
         } else {
-            include_once './view/assets/add_comment.php';
+            include_once '../view/assets/add_comment.php';
         }
         ?>
     </div>

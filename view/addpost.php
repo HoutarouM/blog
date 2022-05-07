@@ -1,4 +1,4 @@
-<?php include_once './view/assets/header.php'; ?>
+<?php include_once '../view/assets/header.php'; ?>
 
 <div class="main-content form">
 
@@ -89,7 +89,7 @@
         if (!empty($_POST['category'])) {
             $this->addDiscussion($_POST['category'], $_POST['author_id'], $_POST['title'], $_POST['post_text']);
 
-            header('Location: index.php');
+            header('Location: ' . BASE_URL);
         } else {
             echo 'Chose category';
         }
@@ -113,4 +113,4 @@
 
 </div>
 
-<?php include_once './view/assets/footer.php'; ?>
+<?php include_once '../view/assets/footer.php'; ?>

@@ -1,7 +1,7 @@
-<?php include_once './view/assets/header.php'; ?>
+<?php include_once '../view/assets/header.php'; ?>
 
 <div class="main-content">
-    <?php include_once './view/assets/discussions.php'; ?>
+    <?php include_once '../view/assets/discussions.php'; ?>
 </div>
 
-<?php include_once './view/assets/footer.php'; ?>
+<?php include_once '../view/assets/footer.php'; ?>

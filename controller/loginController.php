@@ -19,7 +19,7 @@ class LoginController extends BasicController
         if ($res) {
             $_SESSION['login'] = $login;
 
-            header('location: index.php');
+            header('location: ' . BASE_URL);
         } else {
             echo 'Wrong login or password.';
         }
