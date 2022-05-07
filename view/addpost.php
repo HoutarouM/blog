@@ -4,7 +4,7 @@
 
     <h2>Add Discussion</h2>
 
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <input type="hidden" name="author_id" value="<?= $this->getAutourId($_SESSION['login'])[0] ?>">
 
         <input type="text" name="title" placeholder="Discussion title">
@@ -66,7 +66,7 @@
                         </strong>
                     </button>
 
-                    <input type="file" name="file" id="file" class="btn inputfile" data-element="img" accept="image/png, image/jpeg">
+                    <input type="file" name="file[]" id="file" class="btn inputfile" data-element="img" accept="image/png, image/jpeg" multiple>
                     <label for="file">img</label>
                 </div>
 
@@ -87,9 +87,23 @@
 
         // check is category is chosen
         if (!empty($_POST['category'])) {
-            $this->addDiscussion($_POST['category'], $_POST['author_id'], $_POST['title'], $_POST['post_text']);
+            // if files chosen, add files path to database
+            if (!empty($_FILES['file'])) {
+                $file_paths = [];
 
-            header('Location: ' . BASE_URL);
+                // add file path to array
+                for ($i = 0; $i < count($_FILES['file']['name']); $i++) {
+                    $file_path = '/imgs/' . $_FILES['file']['name'][$i];
+
+                    array_push($file_paths, $file_path);
+                }
+
+                $this->addDiscussion($_POST['category'], $_POST['author_id'], $_POST['title'], $_POST['post_text'], $file_paths);
+            } else {
+                $this->addDiscussion($_POST['category'], $_POST['author_id'], $_POST['title'], $_POST['post_text']);
+            }
+
+            // header('Location: ' . BASE_URL);
         } else {
             echo 'Chose category';
         }

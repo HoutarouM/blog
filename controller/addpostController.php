@@ -26,13 +26,20 @@ class AddpostController extends BasicController
         return $author_id[0];
     }
 
-    protected function addDiscussion($category_id, $author_id, $title, $text)
+    protected function addDiscussion($category_id, $author_id, $title, $text, $imgs = null)
     {
         // if category is not chosen return false
         if ($category_id == 0) {
             return false;
         }
 
-        $res = $this->model->addDiscussion($category_id, $author_id, $title, $text);
+        // change to str format for save as a JSON
+        if ($imgs != null) {
+            $imgs = implode('", "', $imgs);
+
+            $imgs = '["' . $imgs . '"]';
+        }
+
+        $res = $this->model->addDiscussion($category_id, $author_id, $title, $text, $imgs);
     }
 };

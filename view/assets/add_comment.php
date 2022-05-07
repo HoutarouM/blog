@@ -1,7 +1,7 @@
 <div class="add-comment">
     <h3>Add Comment</h3>
 
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <input type="hidden" name="parent_post_id" value="<?= $parent_post_id ?>">
         <input type="hidden" name="category_id" value="<?= $category_id ?>">
         <input type="hidden" name="author_id" value="<?= $this->getAutourId($_SESSION['login'])[0] ?>">
